@@ -136,13 +136,6 @@
   background-color: var(--mauve-2);
 }
 
-/* if screen is less than 1111px wide */
-@media (max-width: 1111px) {
-  .searchbox {
-      display: none;
-  }
-}
-
 /* additional styles */
 
 /* Container must be relative so the icon anchors inside it */
@@ -175,4 +168,15 @@
   display: flex;
   position: absolute;
   right: 10px;
+}
+
+/* if screen is less than 1111px wide */
+@media (max-width: 1111px) {
+  .searchbox {
+      display: none;
+  }
+
+  .shortcut-icon {
+    display: none;
+  }
 }

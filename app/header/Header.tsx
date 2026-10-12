@@ -58,7 +58,7 @@ export const Header = ({
                                     boxShadow: "0 0 0 1px var(--gray-8)",
                                 }}
                             >
-                                <img style={{padding: '5px'}} src='/logo.png'/>
+                                <img src='/logo.png'/>
                             </a>
                         </Flex>
                     </Flex>
