@@ -49,6 +49,7 @@ export function ThemeProvider({
             radius='large'
             appearance={appearance}
             grayColor='mauve'
+            style={appearance === 'light' ? {background: 'var(--gray-2)'} : {}}
         >
             <Header props={props} />
             {children}

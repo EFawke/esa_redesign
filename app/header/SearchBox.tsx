@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState, useRef, useEffect } from "react";
 import namesAndIds from "../namesAndIds";
@@ -15,7 +15,7 @@ export default function SearchBox() {
 
   // Filter your array based on the searchValue
   const filteredNames = namesAndIds.filter((item) =>
-    item.name.toLowerCase().includes(searchValue.toLowerCase())
+    item.name.toLowerCase().includes(searchValue.toLowerCase()),
   );
 
   const comboboxRef = useRef<HTMLInputElement>(null);
@@ -24,8 +24,8 @@ export default function SearchBox() {
     const handleKeyDown = (event: any) => {
       const isTypingElsewhere =
         event.target instanceof HTMLInputElement ||
-        event.target instanceof HTMLTextAreaElement
-        event.target?.isContentEditable;
+        event.target instanceof HTMLTextAreaElement;
+      event.target?.isContentEditable;
 
       if (!isTypingElsewhere && event?.key === "/") {
         event.preventDefault();
@@ -49,33 +49,46 @@ export default function SearchBox() {
   };
 
   return (
-    <Ariakit.ComboboxProvider store={comboboxStore} id ="searchbox">
-      <Ariakit.Combobox
-        ref={comboboxRef}
-        store={comboboxStore}
-        placeholder='Search...'
-        className="combobox searchbox"
-        style={{borderRadius: "var(--radius-4)", outlineColor: "var(--accent-a11)"}}
-      />
+    <Ariakit.ComboboxProvider store={comboboxStore} id="searchbox">
+      <div className="combobox-input-container">
+        <Ariakit.Combobox
+          ref={comboboxRef}
+          store={comboboxStore}
+          placeholder="Search..."
+          className="combobox searchbox"
+          style={{
+            borderRadius: "var(--radius-4)",
+            outlineColor: "var(--accent-a11)",
+            height: '2.5rem'
+          }}
+        />
+        <div className="shortcut-icon" aria-hidden="true">
+          /
+        </div>
+      </div>
       <Ariakit.ComboboxPopover
         store={comboboxStore}
         gutter={4}
         sameWidth
         className="popover searchbox"
       >
-        {filteredNames.length === 0 ? <Ariakit.ComboboxItem>No results</Ariakit.ComboboxItem> :
+        {filteredNames.length === 0 ? (
+          <Ariakit.ComboboxItem>No results</Ariakit.ComboboxItem>
+        ) : (
           filteredNames.map((item) => (
-          <Ariakit.ComboboxItem
-            key={item.id}
-            value={item.name}
-            onClick={() => handleSelect(item.name)}
-            className={
-              "combobox-item" + (selectedValue === item.name ? " selected" : "")
-            }
-          >
-            {item.name}
-          </Ariakit.ComboboxItem>
-        ))}
+            <Ariakit.ComboboxItem
+              key={item.id}
+              value={item.name}
+              onClick={() => handleSelect(item.name)}
+              className={
+                "combobox-item" +
+                (selectedValue === item.name ? " selected" : "")
+              }
+            >
+              {item.name}
+            </Ariakit.ComboboxItem>
+          ))
+        )}
       </Ariakit.ComboboxPopover>
     </Ariakit.ComboboxProvider>
   );
