@@ -103,7 +103,7 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                             components={data?.requiredMaterialsForAll
                                 .filter(
                                     (item: MaterialsRow) =>
-                                        item?.unitPrice === undefined,
+                                        item?.unitPrice === undefined && item.name !== 'None',
                                 )
                                 .sort(
                                     (a: MaterialsRow, b: MaterialsRow) =>
