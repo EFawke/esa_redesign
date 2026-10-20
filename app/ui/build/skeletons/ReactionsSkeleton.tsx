@@ -23,7 +23,7 @@ export function ReactionsSkeleton({ rows = 6 }: { rows?: number }) {
                     <ChevronUpIcon height={15} width={15} />
                 </IconButton>
             </Flex>
-            <Card style={{ width: "100%" }} aria-busy="true">
+            <Card style={{ width: "100%" }} aria-busy="true" className="box_shadowed">
                 <Table.Root variant="ghost">
                     <Table.Header>
                         <Table.Row align="center">

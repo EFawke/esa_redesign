@@ -26,7 +26,7 @@ export const SettingsAccordion = ({
 	}
 	return (
 		<Accordion.Root
-			className="AccordionRoot"
+			className="AccordionRoot box_shadowed"
 			type="single"
 			collapsible
 		>
@@ -47,11 +47,7 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text
-								size="3"
-							>
-								Refinery
-							</Text>
+							<Text size="3">Refinery</Text>
 							<Select.Root
 								defaultValue={settings.refinery}
 								onValueChange={(
@@ -66,9 +62,7 @@ export const SettingsAccordion = ({
 								<Select.Trigger style={{ width: "100%" }} />
 								<Select.Content style={{ width: "100%" }}>
 									<Select.Group>
-										<Select.Label>
-											Refinery
-										</Select.Label>
+										<Select.Label>Refinery</Select.Label>
 										<Select.Item value="Athanor">
 											Athanor
 										</Select.Item>
@@ -85,11 +79,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text
-										size="3"
-									>
-										Rig
-									</Text>
+									<Text size="3">Rig</Text>
 									<Select.Root
 										defaultValue={settings.tataraRig}
 										onValueChange={(
@@ -101,8 +91,12 @@ export const SettingsAccordion = ({
 											});
 										}}
 									>
-										<Select.Trigger style={{ width: "100%" }}/>
-										<Select.Content style={{ width: "100%" }}>
+										<Select.Trigger
+											style={{ width: "100%" }}
+										/>
+										<Select.Content
+											style={{ width: "100%" }}
+										>
 											<Select.Group>
 												<Select.Label>Rig</Select.Label>
 												<Select.Item value="None">
@@ -128,11 +122,9 @@ export const SettingsAccordion = ({
 										style={{ width: "100%" }}
 										justify="between"
 									>
-											<Text
-												size="3"
-											>
-												Material Efficiency Rig
-											</Text>
+										<Text size="3">
+											Material Efficiency Rig
+										</Text>
 										<Select.Root
 											defaultValue={
 												settings.refineryMeRig
@@ -142,12 +134,16 @@ export const SettingsAccordion = ({
 											) => {
 												setSettings({
 													...settings,
-													refineryMeRig: value
+													refineryMeRig: value,
 												});
 											}}
 										>
-											<Select.Trigger style={{ width: "100%" }} />
-											<Select.Content style={{ width: "100%" }}>
+											<Select.Trigger
+												style={{ width: "100%" }}
+											/>
+											<Select.Content
+												style={{ width: "100%" }}
+											>
 												<Select.Group>
 													<Select.Label>
 														M.E. Rig
@@ -173,11 +169,9 @@ export const SettingsAccordion = ({
 										justify="between"
 									>
 										<Tooltip content="Feature in development">
-										<Text
-											size="3"
-										>
-											Time Efficiency Rig
-										</Text>
+											<Text size="3">
+												Time Efficiency Rig
+											</Text>
 										</Tooltip>
 										<Select.Root
 											defaultValue={
@@ -192,8 +186,12 @@ export const SettingsAccordion = ({
 												});
 											}}
 										>
-											<Select.Trigger style={{ width: "100%" }}/>
-											<Select.Content style={{ width: "100%" }}>
+											<Select.Trigger
+												style={{ width: "100%" }}
+											/>
+											<Select.Content
+												style={{ width: "100%" }}
+											>
 												<Select.Group>
 													<Select.Label>
 														T.E. Rig
@@ -226,11 +224,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text
-									size="3"
-								>
-									System Type
-								</Text>
+								<Text size="3">System Type</Text>
 								<Select.Root
 									defaultValue={settings.refinerySystem}
 									onValueChange={(
@@ -243,7 +237,7 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }}/>
+									<Select.Trigger style={{ width: "100%" }} />
 									<Select.Content style={{ width: "100%" }}>
 										<Select.Group>
 											<Select.Label>
@@ -273,19 +267,31 @@ export const SettingsAccordion = ({
 										Reaction System Cost Index
 									</Text>
 									<TextField.Root
-										style={{ width: "100%" }}										
+										style={{ width: "100%" }}
 										type="number"
 										min={0.14}
 										step={0.01}
 										placeholder="0.14"
-										defaultValue={settings.reactionCostIndex || ""}
+										defaultValue={
+											settings.reactionCostIndex || ""
+										}
 										onChange={(e) => {
 											setSettings({
 												...settings,
-												reactionCostIndex: parseFloat(e.target.value) < 0.14 ? 0.14 : parseFloat(e.target.value),
+												reactionCostIndex:
+													parseFloat(e.target.value) <
+													0.14
+														? 0.14
+														: parseFloat(
+																e.target.value,
+															),
 											});
 										}}
-									><TextField.Slot side="right">%</TextField.Slot></TextField.Root>
+									>
+										<TextField.Slot side="right">
+											%
+										</TextField.Slot>
+									</TextField.Root>
 								</Flex>
 							</Tooltip>
 							<Flex
@@ -294,23 +300,30 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="3">
-									Facility Tax
-								</Text>
+								<Text size="3">Facility Tax</Text>
 								<TextField.Root
 									style={{ width: "100%" }}
 									type="number"
 									min={0}
 									step={0.01}
 									placeholder="0"
-									defaultValue={settings.reactionFacilityTax || ""}
+									defaultValue={
+										settings.reactionFacilityTax || ""
+									}
 									onChange={(e) => {
 										setSettings({
 											...settings,
-											reactionFacilityTax: parseFloat(e.target.value) > 0 ? parseFloat(e.target.value) : 0
+											reactionFacilityTax:
+												parseFloat(e.target.value) > 0
+													? parseFloat(e.target.value)
+													: 0,
 										});
 									}}
-								><TextField.Slot side="right">%</TextField.Slot></TextField.Root>
+								>
+									<TextField.Slot side="right">
+										%
+									</TextField.Slot>
+								</TextField.Root>
 							</Flex>
 						</Flex>
 					</Flex>
@@ -339,11 +352,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text
-									size="3"
-								>
-									Manufacturing Complex
-								</Text>
+								<Text size="3">Manufacturing Complex</Text>
 								<Select.Root
 									defaultValue={settings.complex}
 									onValueChange={(
@@ -378,11 +387,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text
-										size="3"
-									>
-										Rig
-									</Text>
+									<Text size="3">Rig</Text>
 									<Select.Root
 										defaultValue={settings.complexLargeRig}
 										onValueChange={(
@@ -394,8 +399,12 @@ export const SettingsAccordion = ({
 											});
 										}}
 									>
-										<Select.Trigger style={{ width: "100%" }}/>
-										<Select.Content style={{ width: "100%" }}>
+										<Select.Trigger
+											style={{ width: "100%" }}
+										/>
+										<Select.Content
+											style={{ width: "100%" }}
+										>
 											<Select.Group>
 												<Select.Label>Rig</Select.Label>
 												<Select.Item value="None">
@@ -422,9 +431,7 @@ export const SettingsAccordion = ({
 										justify="between"
 									>
 										<Tooltip content="Feature in development">
-											<Text
-												size="3"
-											>
+											<Text size="3">
 												Time Efficiency Rig
 											</Text>
 										</Tooltip>
@@ -465,9 +472,7 @@ export const SettingsAccordion = ({
 										style={{ width: "100%" }}
 										justify="between"
 									>
-										<Text
-											size="3"
-										>
+										<Text size="3">
 											Material Efficiency Rig
 										</Text>
 										<Select.Root
@@ -515,11 +520,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text
-									size="3"
-								>
-									System Type
-								</Text>
+								<Text size="3">System Type</Text>
 								<Select.Root
 									defaultValue={settings.complexSystem}
 									onValueChange={(
@@ -564,25 +565,35 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text
-										size="3"
-									>
+									<Text size="3">
 										Build System Cost Index
 									</Text>
 									<TextField.Root
-										style={{ width: '100%' }}
+										style={{ width: "100%" }}
 										type="number"
 										placeholder="0.14"
 										min={0.14}
 										step={0.01}
-										defaultValue={settings.buildCostIndex || ""}
+										defaultValue={
+											settings.buildCostIndex || ""
+										}
 										onChange={(e) => {
 											setSettings({
 												...settings,
-												buildCostIndex: parseFloat(e.target.value) > 0.14 ? parseFloat(e.target.value) : 0.14
+												buildCostIndex:
+													parseFloat(e.target.value) >
+													0.14
+														? parseFloat(
+																e.target.value,
+															)
+														: 0.14,
 											});
 										}}
-									><TextField.Slot side="right">%</TextField.Slot></TextField.Root>
+									>
+										<TextField.Slot side="right">
+											%
+										</TextField.Slot>
+									</TextField.Root>
 								</Flex>
 							</Tooltip>
 							<Flex
@@ -591,26 +602,31 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text
-									size="3"
-								>
-									Facility Tax
-								</Text>
+								<Text size="3">Facility Tax</Text>
 								<TextField.Root
-									style={{ width: '100%' }}
+									style={{ width: "100%" }}
 									type="number"
 									placeholder="0"
 									min={0}
 									max={100}
 									step={0.01}
-									defaultValue={settings.complexFacilityTax || ""}
+									defaultValue={
+										settings.complexFacilityTax || ""
+									}
 									onChange={(e) => {
 										setSettings({
 											...settings,
-											complexFacilityTax: parseFloat(e.target.value) > 0 ? parseFloat(e.target.value) : 0,
+											complexFacilityTax:
+												parseFloat(e.target.value) > 0
+													? parseFloat(e.target.value)
+													: 0,
 										});
 									}}
-								><TextField.Slot side='right'>%</TextField.Slot></TextField.Root>
+								>
+									<TextField.Slot side="right">
+										%
+									</TextField.Slot>
+								</TextField.Root>
 							</Flex>
 						</Flex>
 					</Flex>
@@ -640,9 +656,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Component BPO Material Efficiency">
-								<Text
-									size="3"
-								>{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
+									<Text size="3">{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
 								</Tooltip>
 								<Slider
 									name="componentMaterialEfficiency"
@@ -667,9 +681,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Feature in development">
-									<Text
-										size="3"
-									>{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
+									<Text size="3">{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
 								</Tooltip>
 								<Slider
 									name="componentTimeEfficiency"
@@ -714,11 +726,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "40%" }}
 							>
-								<Text
-									size="3"
-								>
-									Ancient Relic
-								</Text>
+								<Text size="3">Ancient Relic</Text>
 								<Select.Root
 									defaultValue={settings.ancientRelic}
 									onValueChange={(
@@ -758,11 +766,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "40%" }}
 							>
-								<Text
-									size="3"
-								>
-									Decryptor
-								</Text>
+								<Text size="3">Decryptor</Text>
 								<Select.Root
 									defaultValue={settings.decryptor}
 									onValueChange={(
@@ -783,7 +787,7 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }}/>
+									<Select.Trigger style={{ width: "100%" }} />
 									<Select.Content style={{ width: "100%" }}>
 										<Select.Group>
 											<Select.Label>
@@ -841,13 +845,9 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text
-								size="3"
-							>
-								Core
-							</Text>
+							<Text size="3">Core</Text>
 							<TextField.Root
-								style={{ width: '100%' }}
+								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
 								min={0}
@@ -856,17 +856,16 @@ export const SettingsAccordion = ({
 								onChange={(e) => {
 									setSettings({
 										...settings,
-										coreVolume: parseInt(e.target.value) < 0 ? 0 : parseInt(e.target.value),
+										coreVolume:
+											parseInt(e.target.value) < 0
+												? 0
+												: parseInt(e.target.value),
 									});
 								}}
 							/>
-							<Text
-								size="3"
-							>
-								Defensive
-							</Text>
+							<Text size="3">Defensive</Text>
 							<TextField.Root
-								style={{ width: '100%' }}
+								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
 								min={0}
@@ -875,7 +874,10 @@ export const SettingsAccordion = ({
 								onChange={(e) => {
 									setSettings({
 										...settings,
-										defensiveVolume: parseInt(e.target.value) < 0 ? 0 : parseInt(e.target.value),
+										defensiveVolume:
+											parseInt(e.target.value) < 0
+												? 0
+												: parseInt(e.target.value),
 									});
 								}}
 							/>
@@ -886,13 +888,9 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text
-								size="3"
-							>
-								Offensive
-							</Text>
+							<Text size="3">Offensive</Text>
 							<TextField.Root
-								style={{ width: '100%' }}
+								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
 								min={0}
@@ -901,17 +899,16 @@ export const SettingsAccordion = ({
 								onChange={(e) => {
 									setSettings({
 										...settings,
-										offensiveVolume: parseInt(e.target.value) < 0 ? 0 : parseInt(e.target.value),
+										offensiveVolume:
+											parseInt(e.target.value) < 0
+												? 0
+												: parseInt(e.target.value),
 									});
 								}}
 							/>
-							<Text
-								size="3"
-							>
-								Propulsion
-							</Text>
+							<Text size="3">Propulsion</Text>
 							<TextField.Root
-								style={{ width: '100%' }}
+								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
 								min={0}
@@ -920,7 +917,10 @@ export const SettingsAccordion = ({
 								onChange={(e) => {
 									setSettings({
 										...settings,
-										propulsionVolume: parseInt(e.target.value) < 0 ? 0 : parseInt(e.target.value),
+										propulsionVolume:
+											parseInt(e.target.value) < 0
+												? 0
+												: parseInt(e.target.value),
 									});
 								}}
 							/>
@@ -951,13 +951,11 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text
-									size="3"
-								>
-									Reaction Slots
-								</Text>
+								<Tooltip content="Reaction slots across all characters">
+									<Text size="3">Reaction Slots</Text>
+								</Tooltip>
 								<TextField.Root
-									style={{ width: '100%' }}
+									style={{ width: "100%" }}
 									type="number"
 									placeholder="0"
 									min={0}
@@ -966,7 +964,15 @@ export const SettingsAccordion = ({
 									onChange={(e) => {
 										setSettings({
 											...settings,
-											numSlots: parseInt(e.target.value) < 0 ? 0 : parseInt(e.target.value) > 100 ? 100 : parseInt(e.target.value),
+											numSlots:
+												parseInt(e.target.value) < 0
+													? 0
+													: parseInt(e.target.value) >
+														  100
+														? 100
+														: parseInt(
+																e.target.value,
+															),
 										});
 									}}
 								/>
@@ -978,9 +984,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text
-										size="3"
-									>
+									<Text size="3">
 										{`Skill Level (${settings.skillLevel})`}
 									</Text>
 									<Slider
@@ -994,8 +998,8 @@ export const SettingsAccordion = ({
 										onValueChange={(e: number[]) => {
 											setSettings({
 												...settings,
-												skillLevel: e[0]
-											})
+												skillLevel: e[0],
+											});
 										}}
 									/>
 								</Flex>
@@ -1014,22 +1018,20 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Feature in development">
-									<Text
-										size="3"
-									>
-										Implant
-									</Text>
+									<Text size="3">Implant</Text>
 								</Tooltip>
 								<Select.Root
 									defaultValue={settings.implant}
-									onValueChange={(value: "None" | "1%" | "2%" | "4%") => {
+									onValueChange={(
+										value: "None" | "1%" | "2%" | "4%",
+									) => {
 										setSettings({
 											...settings,
-											implant: value
-										})
+											implant: value,
+										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }}/>
+									<Select.Trigger style={{ width: "100%" }} />
 									<Select.Content style={{ width: "100%" }}>
 										<Select.Group>
 											<Select.Label>Implant</Select.Label>
@@ -1065,8 +1067,8 @@ const AccordionTrigger = function AccordionTrigger({
 	forwardedRef?: Ref<HTMLButtonElement> | undefined;
 }) {
 	return (
-		<Accordion.Header className="AccordionHeader">
-			<Accordion.Trigger className="AccordionTrigger" ref={forwardedRef}>
+		<Accordion.Header className="AccordionHeader" style={{background: 'transparent'}}>
+			<Accordion.Trigger style={{background: 'transparent'}} className="AccordionTrigger" ref={forwardedRef}>
 				{children}
 				<ChevronDownIcon className="AccordionChevron" aria-hidden />
 			</Accordion.Trigger>

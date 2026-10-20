@@ -40,7 +40,7 @@ export const ComponentsTable = ({
                 </IconButton>
             </Flex>
             {showTable && (
-                <Card style={{ width: "100%" }}>
+                <Card style={{ width: "100%" }} className="box_shadowed">
                     <Table.Root variant="ghost">
                         <Table.Header>
                             <Table.Row align="center">

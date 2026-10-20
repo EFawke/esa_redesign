@@ -35,7 +35,7 @@ export function ComponentsTableSkeleton({ rows = 6, showTable = true, onToggle }
                 </IconButton>
             </Flex>
             {showTable && (
-                <Card style={{ width: "100%" }} aria-busy="true" aria-label="Loading components">
+                <Card style={{ width: "100%" }} aria-busy="true" aria-label="Loading components" className="box_shadowed">
                     <Table.Root variant="ghost">
                         <Table.Header>
                             <Table.Row align="center">

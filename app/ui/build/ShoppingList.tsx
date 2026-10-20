@@ -85,7 +85,7 @@ export const ShoppingList = ({
             </Flex>
 
             {show && (
-                <Card size="3" style={{ width: "100%" }}>
+                <Card size="3" style={{ width: "100%" }} className="box_shadowed">
                     <Table.Root size="3" variant="ghost">
                         <Table.Header>
                             <Table.Row align="center">

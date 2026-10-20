@@ -18,7 +18,7 @@ export function BuildHeaderSkeleton({ subsystemCount = 4 }: OverviewSkeletonProp
             <Heading mt="5" mb="4" size="5">
                 Overview
             </Heading>
-            <Card style={{ width: "100%" }}>
+            <Card style={{ width: "100%" }} className="box_shadowed">
                 <Flex justify="between" align="center" gap="6" wrap="wrap" p="2">
                     <DataList.Root>
                         {ROWS.map((row) => (

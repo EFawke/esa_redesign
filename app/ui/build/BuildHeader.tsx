@@ -41,7 +41,7 @@ export const BuildHeader = ({
             <Heading mt="5" mb="4" size="5">
                 Overview
             </Heading>
-            <Card style={{ width: "100%" }}>
+            <Card style={{ width: "100%" }} className="box_shadowed">
                 <Flex
                     justify="between"
                     align="center"

@@ -32,7 +32,7 @@ export function ShoppingListSkeleton({ rows = 6 }: ShoppingListSkeletonProps) {
                 </Flex>
             </Flex>
 
-            <Card size="3" style={{ width: "100%" }} aria-busy="true">
+            <Card size="3" style={{ width: "100%" }} aria-busy="true" className="box_shadowed">
                 <Table.Root size="3" variant="ghost">
                     <Table.Header>
                         <Table.Row align="center">
