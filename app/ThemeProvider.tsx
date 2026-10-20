@@ -29,13 +29,11 @@ export function ThemeProvider({
     }, [initialAppearance]);
 
     const toggleAppearance = (current: Appearance) => {
-        console.log("toggled")
         const next: Appearance = current === 'light' ? 'dark' : 'light'
         const d = document.documentElement
         d.classList.remove('light', 'dark')
         d.classList.add(next)
         d.style.colorScheme = next
-        console.log(next)
         setAppearance(next)
         Cookies.set('appearance', next, { expires: 365, sameSite: 'lax', path: '/' })
     }

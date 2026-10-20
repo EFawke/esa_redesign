@@ -1,41 +1,84 @@
-import { useState, useEffect } from 'react';
-import { Flex, Text, Tooltip, Badge } from "@radix-ui/themes";
-import { DoubleArrowUpIcon, DoubleArrowDownIcon } from "@radix-ui/react-icons"
+import { Box, Flex, Text, Tooltip, Badge } from "@radix-ui/themes";
+import { DoubleArrowUpIcon, DoubleArrowDownIcon } from "@radix-ui/react-icons";
+import { formatNumber, getClassName } from "../utils/uiHelpers";
 
-export default function NumericTableCell(props) {
-    // const [value, setValue] = useState(() => {
-    //     return props.checkInfinity(props.value);
-    // });
-    // const [percentage, setPercentage] = useState(props.percentage);
-    // const [tipMessage, setTipMessage] = useState(props.tipMessage);
-    // const [colorBlindMode, setColorBlindMode] = useState(props.colorBlindMode);
+export default function NumericTableCell({
+    value,
+    percentage,
+    message,
+    type,
+    upIsBad
+}: {
+    value: number | "Infinity" | '0';
+    percentage?: number;
+    message: string;
+    type: "price" | "int";
+    upIsBad?: boolean;
+}) {
+    if (value === 0) {
+        return (
+            <Flex height="100%" align="center" justify="end">
+                <Badge variant="outline" color="orange" size="3">
+                    No Data
+                </Badge>
+            </Flex>
+        );
+    }
 
-    // useEffect(() => {
-    //     setValue(() => {
-    //         return props.checkInfinity(props.value);
-    //     });
-    //     setPercentage(props.percentage);
-    //     setTipMessage(props.tipMessage);
-    //     setColorBlindMode(props.colorBlindMode);
-    // }, [props.value, props.percentage, props.tipMessage, props.colorBlindMode]);
+    const formatted = (
+        <Text size="3" align="right" style={{whiteSpace: "nowrap", color: 'var(--gray-12)'}}>
+            {formatNumber(value, type)}
+        </Text>
+    );
 
     return (
-        <Flex height="100%" gap="2" align="center">
-            {value == "No Data" ? null :
-                <Tooltip content={tipMessage}>
-                    <Flex direction="column" justify="center" width="fit-content" align="center" className={props.getClassName(percentage, colorBlindMode)}>
-                        {percentage >= 0 ? <DoubleArrowUpIcon height="15px" width="15px" /> : <DoubleArrowDownIcon height="15px" width="15px" />}
-                        <Text size="1">{percentage}%</Text>
+        <Box
+            height="100%"
+            style={value === "Infinity" || value === '0' ? {} : {
+                display: "grid",
+                gridTemplateColumns: "1fr 3rem",
+                alignItems: "center",
+                columnGap: "var(--space-2)",
+                fontVariantNumeric: "tabular-nums",
+            }}
+        >
+            {value === "Infinity" || value === '0' ? (
+                <Flex justify='end' align='center' style={{width: '100%', height: '100%'}}>
+                    <Badge variant="outline" color="orange" size="3" style={{
+                        padding: 'var(--space-2)', 
+                        width: '100%', 
+                        justifyContent: 'center',
+                        maxWidth: '8rem'
+                    }}>
+                        No Data
+                    </Badge>
+                </Flex>
+            ) : type === "price" && Number(value) > 1000000 ? (
+                <Tooltip content={`${Number(value).toLocaleString()} ISK`}>
+                    {formatted}
+                </Tooltip>
+            ) : (
+                formatted
+            )}
+            {value === "Infinity" || value === '0' || percentage === undefined ? null : (
+                <Tooltip content={message}>
+                    <Flex
+                        direction="column"
+                        align="end"
+                        className={getClassName(percentage, upIsBad)}
+                    >
+                        {percentage > 0 && (
+                            <DoubleArrowUpIcon height="12px" width="12px" />
+                        )}
+                        {percentage < 0 && (
+                            <DoubleArrowDownIcon height="12px" width="12px" />
+                        )}
+                        <Text style={{ fontSize: "12px" }}>
+                            {Number(percentage).toFixed(1)}%
+                        </Text>
                     </Flex>
                 </Tooltip>
-            }
-            {
-                value == "No Data" ?
-                    <Badge variant="outline" color="orange" size="3">{value}</Badge> :
-                    <Text size="3">
-                        {Number(value).toLocaleString()}
-                    </Text>
-            }
-        </Flex>
-    )
+            )}
+        </Box>
+    );
 }

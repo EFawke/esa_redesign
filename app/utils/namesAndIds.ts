@@ -1,4 +1,4 @@
-const namesAndIds = [
+export const namesAndIds = [
     { name: "Legion Core - Dissolution Sequencer", id: 45622 },
     { name: "Legion Core - Augmented Antimatter Reactor", id: 45623 },
     { name: "Legion Core - Energy Parasitic Complex", id: 45624 },
@@ -49,4 +49,20 @@ const namesAndIds = [
     { name: "Loki Offensive - Support Processor", id: 45609 }
 ]
 
-export default namesAndIds;
+export const systemNamesAndIds = [
+    {
+        name: 'Jita', id: 10000002
+    },
+    {
+        name: 'Amarr', id: 10000043
+    },
+    {
+        name: 'Dodixie', id: 10000032
+    },
+    {
+        name: 'Hek', id: 10000042
+    },
+    {
+        name: 'Rens', id: 10000030
+    }
+]

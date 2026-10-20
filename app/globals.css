@@ -5,6 +5,13 @@
   --foreground: #171717;
 }
 
+.settings_accordion {
+  width: calc(100% / 3);
+  height: 100vh;
+  position: sticky;
+  top: var(--space-9);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -52,7 +59,7 @@ body {
 }
 
 .box_shadowed {
-  background: var(--gray-2);
+  background: var(--color-panel);
   box-shadow: 0px 1px 5px var(--gray-8);
 }
 
@@ -61,11 +68,24 @@ body {
   box-shadow: 0px 1px 1px var(--gray-8);
 }
 
+.footer_shadowed {
+  background: var(--color-panel);
+  align-self: end;
+  width: 100%;
+  box-shadow: 0px -1px 3px var(--gray-8);
+}
+
+.footer_shadowed:where(.dark, .dark *) {
+  box-shadow: 0px -1px 1px var(--gray-8);
+  background: var(--gray-a2);
+}
+
 .appear_on_load {
   opacity: 0;
   transform: translateY(15px);
   animation: appear 0.3s ease-in-out forwards;
   -webkit-animation: appear 0.3s ease-in-out forwards;
+  transition: 0.3s;
 }
 
 @keyframes appear {
@@ -85,5 +105,56 @@ body {
   to {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+.mobile_home_navi {
+  display: none;
+}
+
+.success {
+  color: green !important;
+}
+
+.warning {
+  color: red !important;
+}
+
+.zero_percent {
+  color: orange !important;
+}
+
+.chevron_default {
+  color: var(--accent-a6);
+}
+
+.chevron_selected {
+  color: black;
+}
+
+.chevron_selected:where(.dark, .dark *) {
+  color: var(--accent-a11);
+}
+
+.chevron_default:where(.dark, .dark *) {
+  color: gray;
+}
+
+.success { color: var(--grass-11) !important; }
+.warning { color: var(--red-11) !important; }
+.zero_percent { color: var(--gray-11) !important; }
+
+.recharts-surface {
+  border: none !important;
+  outline: none !important;
+}
+
+/* if screen is less than 1111px wide */
+@media (max-width: 1111px) {
+  .desktop_home_navi {
+    display: none;
+  }
+  .mobile_home_navi {
+    display: flex;
   }
 }

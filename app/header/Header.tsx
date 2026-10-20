@@ -38,23 +38,24 @@ export const Header = ({
             className='box_shadowed'
         >
             <Flex width="100%" justify="between" align="center">
-                <Flex gap="5" align="stretch">
+                <Flex gap="3" align="stretch">
                     <Flex
                         gap="1"
-                        mt="5"
-                        mb="5"
+                        mt="2"
+                        mb="2"
                         align="start"
                         direction="column"
                     >
-                        <Flex className=''>
+                        <Flex>
                             <a
                                 href="/"
                                 style={{
                                     position: "relative",
-                                    height: "4rem",
-                                    width: "4rem",
+                                    height: "3.5rem",
+                                    width: "3.5rem",
                                     overflow: "hidden",
                                     borderRadius: "var(--radius-4)",
+                                    margin: '1rem',
                                     boxShadow: "0 0 0 1px var(--gray-8)",
                                 }}
                             >
@@ -64,11 +65,13 @@ export const Header = ({
                     </Flex>
                     <Flex align="stretch">
                         <Link
+                            href="/"
                             className={` ${props.appearance} header_nav ${pathname !== "/build" ? "active" : ""}`}
                         >
                             Market
                         </Link>
                         <Link
+                            href='/build'
                             className={` ${props.appearance} header_nav ${pathname === "/build" ? "active" : ""}`}
                         >
                             Build Calculator

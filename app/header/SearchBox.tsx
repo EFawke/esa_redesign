@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import namesAndIds from "../namesAndIds";
+import { namesAndIds } from "../utils/namesAndIds";
 import * as Ariakit from "@ariakit/react";
 import "../css/searchbox.css";
-import { Kbd } from "@radix-ui/themes";
+import { Flex, Text } from "@radix-ui/themes";
 
 export default function SearchBox() {
   const comboboxStore = Ariakit.useComboboxStore();
@@ -54,12 +54,12 @@ export default function SearchBox() {
         <Ariakit.Combobox
           ref={comboboxRef}
           store={comboboxStore}
-          placeholder="Search..."
+          placeholder="Search subsystems..."
           className="combobox searchbox"
           style={{
             borderRadius: "var(--radius-4)",
             outlineColor: "var(--accent-a11)",
-            height: '2.5rem'
+            height: "2.5rem",
           }}
         />
         <div className="shortcut-icon" aria-hidden="true">
@@ -85,7 +85,10 @@ export default function SearchBox() {
                 (selectedValue === item.name ? " selected" : "")
               }
             >
-              {item.name}
+              <Flex direction="column">
+                <Text size="3">{item.name.split(" - ")[0]}</Text>
+                <Text size="3">{item.name.split(" - ")[1]}</Text>
+              </Flex>
             </Ariakit.ComboboxItem>
           ))
         )}

@@ -1,12 +1,10 @@
-import Metadata from "next"
 import { Geist, Geist_Mono } from "next/font/google";
 import "@radix-ui/themes/styles.css";
-import { Theme, ThemePanel } from "@radix-ui/themes";
-import { Header } from "./header/Header";
 import { cookies } from "next/headers";
 import Script from "next/script";
-import { ThemeProvider } from "./ThemeProvider";
-import "./globals.css";
+import { ThemeProvider } from '@/app/ThemeProvider';
+import { Footer } from '@/app/Footer';
+import '@/app/globals.css';
 
 // Runs before first paint so the correct theme is on <html> immediately — no dark flash.
 const themeScript = `
@@ -53,7 +51,7 @@ export default async function RootLayout({
     >
       <head>
         <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_MEASUREMENT_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="gtag-init" strategy="afterInteractive">
@@ -61,16 +59,17 @@ export default async function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.GOOGLE_MEASUREMENT_ID}');
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID}');
           `}
         </Script>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           initialAppearance={initialAppearance}
         >
           {children}
+          <Footer/>
         </ThemeProvider>
       </body>
     </html>
