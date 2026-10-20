@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, Card, Heading, Text, Table, IconButton } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import { SettingsAccordion } from "@/app/ui/build/SettingsAccordion";
 import { type BuildSettings } from "@/app/utils/user_settings";
 import { gary } from "@/app/utils/gary";
@@ -22,10 +22,6 @@ interface MaterialsRow {
     quantity: number;
     name: string;
     id: number;
-}
-
-const ShoppingListSkeleton = () => {
-    return null;
 };
 
 export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
@@ -78,16 +74,16 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
             <Flex
                 direction="column"
                 className="settings_accordion"
-                style={{ height: "fit-content", width: "35%" }}
+                style={{ height: "fit-content" }}
             >
                 <SettingsAccordion
-                    settings={settings}
+                    settings={settings} 
                     setSettings={setSettings}
                 />
             </Flex>
             <Flex
                 className="required_materials"
-                style={{ height: "fit-content", width: "65%" }}
+                style={{ height: "fit-content" }}
             >
                 <Flex direction="column" style={{ width: "100%" }}>
                     <BuildHeader

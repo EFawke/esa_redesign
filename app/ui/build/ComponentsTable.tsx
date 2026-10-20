@@ -1,6 +1,6 @@
 import BuildToast from "./ComponentsToast";
 import { useState } from "react";
-import { Heading, Card, Table, Flex, Button, IconButton, Text } from "@radix-ui/themes";
+import { Heading, Card, Table, Flex, IconButton, Text } from "@radix-ui/themes";
 import { ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
 import { ComponentsTableSkeleton } from './skeletons/ComponentsTableSkeleton'
 

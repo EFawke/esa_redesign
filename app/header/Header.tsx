@@ -2,15 +2,11 @@
 
 import {
     Flex,
-    Heading,
-    Text,
     Link,
     Container,
-    Card,
     IconButton,
-    Theme,
 } from "@radix-ui/themes";
-import { GearIcon, PersonIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import SearchBox from "@/app/header/SearchBox";
 import { CSSProperties } from "react";
 import { usePathname } from "next/navigation";
@@ -86,7 +82,9 @@ export const Header = ({
                         variant="outline"
                         style={{ height: "2.5rem", width: "2.5rem", borderRadius: "var(--radius-4)", boxShadow: "0 0 0 1px var(--gray-8)", }}
                     >
-                        <SunIcon height="18px" width="18px" />
+                        {
+                            props.appearance === "dark" ? <SunIcon/> : <MoonIcon/>
+                        }
                     </IconButton>
                 </Flex>
             </Flex>

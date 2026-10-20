@@ -2,7 +2,6 @@ import { Heading, Card, Flex, Tooltip, Text, DataList } from "@radix-ui/themes";
 import {BuildHeaderSkeleton} from './skeletons/BuildHeaderSkeleton'
 
 const NUM = { fontVariantNumeric: "tabular-nums" } as const;
-const isk = (n: number) => `${Math.round(n).toLocaleString()} ISK`;
 import NumericTableCell from "../NumericTableCell";
 export const BuildHeader = ({
     loading,
@@ -49,6 +48,7 @@ export const BuildHeader = ({
                     wrap="wrap"
                     p="2"
                     style={{width: '100%'}}
+                    className="build_header_container"
                 >
                     <DataList.Root style={{width: '20%'}}>
                         <DataList.Item>

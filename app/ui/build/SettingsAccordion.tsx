@@ -10,7 +10,6 @@ import {
 	Text,
 	TextField,
 	Slider,
-	Heading,
 } from "@radix-ui/themes";
 import { type BuildSettings } from "@/app/utils/user_settings";
 
