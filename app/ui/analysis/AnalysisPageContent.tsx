@@ -93,9 +93,9 @@ export interface AnalysisResponse {
 
 const ChartSkeleton = () => {
     return (
-        <Flex style={{ flex: 2, height: '100%' }}>
+        <Flex style={{ flex: 2 }}>
             <Card
-                style={{ width: "100%", height: '100%', minHeight: "400px" }}
+                style={{ width: "100%", flexGrow: 1 }}
                 className="box_shadowed"
             >
                 <Flex
