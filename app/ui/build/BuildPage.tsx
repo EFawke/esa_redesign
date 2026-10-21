@@ -27,16 +27,15 @@ interface MaterialsRow {
 export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
     const [settings, setSettings] = useState<BuildSettings>(saved);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<null | string>(null);
     const [data, setData] = useState<any | null>(null);
-    const [showTable, setShowTable] = useState(true);
-    const [debouncedQuery, setDebouncedQuery] = useState<BuildSettings | null>(
-        null,
-    );
+    const [debouncedSettings, setDebouncedSettings] = useState<BuildSettings>(saved);
 
     useEffect(() => {
+        if(settings === debouncedSettings){
+            return;
+        }
         const timeout = setTimeout(() => {
-            setDebouncedQuery(settings);
+            setDebouncedSettings(settings);
         }, 400);
 
         return () => {
@@ -49,11 +48,10 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
         setLoading(true);
 
         gary<BuildSettings>("/api/build", {
-            json: settings,
+            json: debouncedSettings,
             signal: controller.signal,
         })
             .then((res) => {
-                console.log("FETCHED")
                 setData(res);
             })
             .catch((err) => {
@@ -67,7 +65,7 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
             });
 
         return () => controller.abort();
-    }, [debouncedQuery]);
+    }, [debouncedSettings]);
 
     return (
         <Flex className="build_container" width="100%" gap="6">
@@ -77,7 +75,7 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                 style={{ height: "fit-content" }}
             >
                 <SettingsAccordion
-                    settings={settings} 
+                    settings={debouncedSettings} 
                     setSettings={setSettings}
                 />
             </Flex>
@@ -91,10 +89,10 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                         totalJobCost={data?.totalJobCost}
                         totalTax={data?.totalTax}
                         matCostTotal={data?.maxBuys}
-                        core={settings?.coreVolume}
-                        def={settings?.defensiveVolume}
-                        prop={settings?.propulsionVolume}
-                        off={settings?.offensiveVolume}
+                        core={debouncedSettings?.coreVolume}
+                        def={debouncedSettings?.defensiveVolume}
+                        prop={debouncedSettings?.propulsionVolume}
+                        off={debouncedSettings?.offensiveVolume}
                         numRuns={data?.blueprints.numRuns}
                     />
                     <Toast.Provider swipeDirection="right">

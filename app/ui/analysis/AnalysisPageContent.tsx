@@ -93,9 +93,9 @@ export interface AnalysisResponse {
 
 const ChartSkeleton = () => {
     return (
-        <Flex style={{ flex: 2 }}>
+        <Flex style={{ flex: 2, height: '400px' }}>
             <Card
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "100%", height: "400px" }}
                 className="box_shadowed"
             >
                 <Flex
@@ -175,12 +175,12 @@ export function AnalysisPageContent({ id }: { id: number }) {
     };
 
     return loading ? (
-        <Flex gap="6" style={{ width: "100%" }}>
+        <Flex gap="6" style={{ width: "100%" }} className="analysis_page_layout">
             <AnalysisSkeleton />
             <ChartSkeleton />
         </Flex>
     ) : (
-        <Flex gap="6" style={{ width: "100%" }}>
+        <Flex gap="6" style={{ width: "100%" }} className="analysis_page_layout">
             <AnalysisComponent
                 loading={loading}
                 data={current}

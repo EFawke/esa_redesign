@@ -90,9 +90,9 @@ export const Chart = ({
     const hasBars = active.some((s) => s.kind === "bar");
 
     return (
-        <Flex style={{ flex: 2 }}>
+        <Flex style={{ flex: 2, minHeight: '400px' }}>
             <Card
-                style={{ width: "100%", height: "100%" }}
+                style={{ width: "100%", height: "100%", minHeight: '400px' }}
                 className="box_shadowed"
             >
                 {!active.length ? (
@@ -108,7 +108,7 @@ export const Chart = ({
                         Turn on a field to chart it.
                     </Flex>
                 ) : (
-                    <ResponsiveContainer width="100%" height="100%">
+                    <ResponsiveContainer width="100%" height={500} style={{height: '400px'}}>
                         <ComposedChart
                             data={data}
                             margin={{ top: 26, right: 0, bottom: 20, left: 0 }}

@@ -167,8 +167,17 @@ body {
   width: 65%;
 }
 
+.analysis_page_layout {
+  flex-direction: row;
+}
+
 /* if screen is less than 1111px wide */
 @media (max-width: 1111px) {
+
+  .analysis_page_layout {
+    flex-direction: column;
+  }
+  
 
   .settings_accordion {
     width: 100%;
