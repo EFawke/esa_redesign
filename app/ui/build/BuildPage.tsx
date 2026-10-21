@@ -74,7 +74,6 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
             signal: controller.signal,
         })
             .then((res) => {
-                console.log(res);
                 setData(res);
             })
             .catch((err) => {

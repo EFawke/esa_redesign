@@ -6,18 +6,6 @@ import { ThemeProvider } from '@/app/ThemeProvider';
 import { Footer } from '@/app/Footer';
 import '@/app/globals.css';
 
-// Runs before first paint so the correct theme is on <html> immediately — no dark flash.
-const themeScript = `
-(function () {
-  try {
-    var m = document.cookie.match(/(?:^|;\\s*)appearance=(light|dark)/);
-    var a = m ? m[1] : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    var d = document.documentElement;
-    d.classList.add(a);
-    d.style.colorScheme = a;
-  } catch (e) {}
-})();`;
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
