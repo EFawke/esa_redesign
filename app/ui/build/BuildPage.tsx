@@ -101,10 +101,10 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                     setSettings={setSettings}
                 />
             </Flex>
-            {debouncedSettings.coreVolume === 0 &&
-            debouncedSettings.defensiveVolume === 0 &&
-            debouncedSettings.offensiveVolume === 0 &&
-            debouncedSettings.propulsionVolume === 0 ? (
+            {debouncedSettings.coreVolume === 0 || !debouncedSettings.coreVolume &&
+            debouncedSettings.defensiveVolume === 0 || !debouncedSettings.defensiveVolume &&
+            debouncedSettings.offensiveVolume === 0 || !debouncedSettings.offensiveVolume &&
+            debouncedSettings.propulsionVolume === 0 || !debouncedSettings.propulsionVolume ? (
                 <EmptyState />
             ) : (
                 <Flex
@@ -117,10 +117,10 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                             totalJobCost={data?.totalJobCost}
                             totalTax={data?.totalTax}
                             matCostTotal={data?.maxBuys}
-                            core={debouncedSettings.coreVolume}
-                            def={debouncedSettings.defensiveVolume}
-                            prop={debouncedSettings.propulsionVolume}
-                            off={debouncedSettings.offensiveVolume}
+                            core={Number(debouncedSettings.coreVolume) || 0}
+                            def={Number(debouncedSettings.defensiveVolume) || 0}
+                            prop={Number(debouncedSettings.propulsionVolume) || 0}
+                            off={Number(debouncedSettings.offensiveVolume) || 0}
                             numRuns={data?.blueprints.numRuns}
                         />
                         <Toast.Provider swipeDirection="right">

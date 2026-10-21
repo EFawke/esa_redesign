@@ -9,7 +9,7 @@ export default function Home() {
         <Flex direction="column" gap="9" align="center">
           <Flex direction="column" gap="2" align="center">
             <Heading size="9" className="appear_on_load">
-              Eve Subsystem{" "}
+              EVE Subsystem{" "}
               <Em>
                 <span style={{ color: "var(--accent-a11)" }}>Analysis</span>
               </Em>

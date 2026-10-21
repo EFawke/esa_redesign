@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Eve Subsystem Analysis",
-  description: "Building tool for Eve Online T3 manufacturing",
+  title: "EVE Subsystem Analysis",
+  description: "Building tool for EVE Online T3 manufacturing",
 };
 
 export default async function RootLayout({
