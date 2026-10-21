@@ -86,7 +86,7 @@ export const ReactionSchedule = ({ loading, schedule }: { loading: boolean; sche
                                     </Table.RowHeaderCell>
                                     <Table.Cell style={NUM}>
                                         <Text size="3">
-                                            {c.runs.toLocaleString()}
+                                            {c.runs?.toLocaleString()}
                                         </Text>
                                     </Table.Cell>
                                     <Table.Cell justify="end" style={NUM}>

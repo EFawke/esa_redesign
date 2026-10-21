@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex } from "@radix-ui/themes";
+import { Flex, Card, Heading, Text } from "@radix-ui/themes";
 import { SettingsAccordion } from "@/app/ui/build/SettingsAccordion";
 import { type BuildSettings } from "@/app/utils/user_settings";
 import { gary } from "@/app/utils/gary";
@@ -15,6 +15,7 @@ export interface ComponentRow {
 import { Toast } from "radix-ui";
 import { ComponentsTable } from "./ComponentsTable";
 import { ReactionSchedule } from "./ReactionSchedule";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 interface MaterialsRow {
     percentageChange?: number;
     lineTotal?: number;
@@ -22,24 +23,45 @@ interface MaterialsRow {
     quantity: number;
     name: string;
     id: number;
+}
+
+const EmptyState = () => {
+    return (
+        <Flex
+            direction="column"
+            className="required_materials"
+        >
+            <Heading mt="5" mb="4" size="5">
+                Overview
+            </Heading>
+            <Card style={{ width: "100%" }}>
+                <Flex mt="9" mb="9" align="center" justify="center" direction='row' gap='2'>
+                <ArrowLeftIcon style={{color: 'var(--accent-a11)'}}/><Text>Update your <span style={{color: 'var(--accent-a11)', textDecoration: 'underline'}}>Build Volume</span> to get something here.</Text>
+                </Flex>
+            </Card>
+        </Flex>
+    );
 };
 
 export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
     const [settings, setSettings] = useState<BuildSettings>(saved);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<any | null>(null);
-    const [debouncedSettings, setDebouncedSettings] = useState<BuildSettings>(saved);
+    const [debouncedSettings, setDebouncedSettings] =
+        useState<BuildSettings>(saved);
 
     useEffect(() => {
-        if(settings === debouncedSettings){
+        if (settings === debouncedSettings) {
             return;
         }
+        setLoading(true);
         const timeout = setTimeout(() => {
             setDebouncedSettings(settings);
         }, 400);
 
         return () => {
             clearTimeout(timeout);
+            setLoading(false);
         };
     }, [settings]);
 
@@ -52,6 +74,7 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
             signal: controller.signal,
         })
             .then((res) => {
+                console.log(res);
                 setData(res);
             })
             .catch((err) => {
@@ -75,60 +98,68 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                 style={{ height: "fit-content" }}
             >
                 <SettingsAccordion
-                    settings={debouncedSettings} 
+                    settings={debouncedSettings}
                     setSettings={setSettings}
                 />
             </Flex>
-            <Flex
-                className="required_materials"
-                style={{ height: "fit-content" }}
-            >
-                <Flex direction="column" style={{ width: "100%" }}>
-                    <BuildHeader
-                        loading={loading}
-                        totalJobCost={data?.totalJobCost}
-                        totalTax={data?.totalTax}
-                        matCostTotal={data?.maxBuys}
-                        core={debouncedSettings?.coreVolume}
-                        def={debouncedSettings?.defensiveVolume}
-                        prop={debouncedSettings?.propulsionVolume}
-                        off={debouncedSettings?.offensiveVolume}
-                        numRuns={data?.blueprints.numRuns}
-                    />
-                    <Toast.Provider swipeDirection="right">
-                        <ComponentsTable
+            {debouncedSettings.coreVolume === 0 &&
+            debouncedSettings.defensiveVolume === 0 &&
+            debouncedSettings.offensiveVolume === 0 &&
+            debouncedSettings.propulsionVolume === 0 ? (
+                <EmptyState />
+            ) : (
+                <Flex
+                    className="required_materials"
+                    style={{ height: "fit-content" }}
+                >
+                    <Flex direction="column" style={{ width: "100%" }}>
+                        <BuildHeader
                             loading={loading}
-                            components={data?.requiredMaterialsForAll
-                                .filter(
+                            totalJobCost={data?.totalJobCost}
+                            totalTax={data?.totalTax}
+                            matCostTotal={data?.maxBuys}
+                            core={debouncedSettings.coreVolume}
+                            def={debouncedSettings.defensiveVolume}
+                            prop={debouncedSettings.propulsionVolume}
+                            off={debouncedSettings.offensiveVolume}
+                            numRuns={data?.blueprints.numRuns}
+                        />
+                        <Toast.Provider swipeDirection="right">
+                            <ComponentsTable
+                                loading={loading}
+                                components={data?.requiredMaterialsForAll
+                                    .filter(
+                                        (item: MaterialsRow) =>
+                                            item?.unitPrice === undefined &&
+                                            item.name !== "None",
+                                    )
+                                    .sort(
+                                        (a: MaterialsRow, b: MaterialsRow) =>
+                                            a.quantity - b.quantity,
+                                    )}
+                            />
+                            <Toast.Viewport className="ToastViewport" />
+                        </Toast.Provider>
+                        <Toast.Provider swipeDirection="right">
+                            <ShoppingList
+                                loading={loading}
+                                shoppingList={data?.requiredMaterialsForAll.filter(
                                     (item: MaterialsRow) =>
-                                        item?.unitPrice === undefined && item.name !== 'None',
-                                )
-                                .sort(
-                                    (a: MaterialsRow, b: MaterialsRow) =>
-                                        a.quantity - b.quantity,
+                                        item?.unitPrice !== undefined,
                                 )}
-                        />
-                        <Toast.Viewport className="ToastViewport" />
-                    </Toast.Provider>
-                    <Toast.Provider swipeDirection="right">
-                        <ShoppingList
-                            loading={loading}
-                            shoppingList={data?.requiredMaterialsForAll.filter(
-                                (item: MaterialsRow) =>
-                                    item?.unitPrice !== undefined,
-                            )}
-                        />
-                        <Toast.Viewport className="ToastViewport" />
-                    </Toast.Provider>
-                    <Toast.Provider swipeDirection="right">
-                        <ReactionSchedule
-                            schedule={data?.schedule}
-                            loading={loading}
-                        />
-                        <Toast.Viewport className="ToastViewport" />
-                    </Toast.Provider>
+                            />
+                            <Toast.Viewport className="ToastViewport" />
+                        </Toast.Provider>
+                        <Toast.Provider swipeDirection="right">
+                            <ReactionSchedule
+                                schedule={data?.schedule}
+                                loading={loading}
+                            />
+                            <Toast.Viewport className="ToastViewport" />
+                        </Toast.Provider>
+                    </Flex>
                 </Flex>
-            </Flex>
+            )}
         </Flex>
     );
 };
