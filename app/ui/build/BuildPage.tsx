@@ -34,7 +34,7 @@ const EmptyState = () => {
             <Heading mt="5" mb="4" size="5">
                 Overview
             </Heading>
-            <Card style={{ width: "100%" }}>
+            <Card style={{ width: "100%" }} className="box_shadowed">
                 <Flex mt="9" mb="9" align="center" justify="center" direction='row' gap='2'>
                 <ArrowLeftIcon style={{color: 'var(--accent-a11)'}}/><Text>Update your <span style={{color: 'var(--accent-a11)', textDecoration: 'underline'}}>Build Volume</span> to get something here.</Text>
                 </Flex>

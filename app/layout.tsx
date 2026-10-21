@@ -40,8 +40,7 @@ export default async function RootLayout({
 }>) {
   const cookieStore = await cookies();
   const stored = cookieStore.get("appearance")?.value;
-  const initialAppearance =
-    stored === "light" || stored === "dark" ? stored : undefined;
+  const initialAppearance = stored === "light" || stored === "dark" ? stored : undefined;
 
   return (
     <html
@@ -62,7 +61,19 @@ export default async function RootLayout({
             gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID}');
           `}
         </Script>
-        <Script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script id="set-theme" strategy="beforeInteractive">
+          {`
+            (function () {
+              try {
+                var m = document.cookie.match(/(?:^|;\\s*)appearance=(light|dark)/);
+                var a = m ? m[1] : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                var d = document.documentElement;
+                d.classList.add(a);
+                d.style.colorScheme = a;
+              } catch (e) {}
+            })();
+          `}
+        </Script>
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider

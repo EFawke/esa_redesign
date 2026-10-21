@@ -1071,7 +1071,9 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="2">Materials Trade Hub</Text>
+							<Tooltip content="Where you purchase materials">
+							<Text size="2">Buying inputs</Text>
+							</Tooltip>
 							<Select.Root
 								defaultValue={settings.materialsLocation.toString()}
 								onValueChange={(value) => {
@@ -1106,7 +1108,7 @@ export const SettingsAccordion = ({
 								</Select.Content>
 							</Select.Root>
 							<Tooltip content="How you purchase materials">
-								<Text size="2">Material Order Type</Text>
+								<Text size="2">Order type</Text>
 							</Tooltip>
 							<Select.Root
 								defaultValue={settings.materialsOrderType}
@@ -1137,7 +1139,9 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="2">Where you're selling</Text>
+							<Tooltip content="Where you sell your subsystems">
+								<Text size="2">Selling outputs</Text>
+							</Tooltip>
 							<Select.Root
 								defaultValue={settings.subsystemsLocation.toString()}
 								onValueChange={(value) => {
@@ -1172,7 +1176,7 @@ export const SettingsAccordion = ({
 								</Select.Content>
 							</Select.Root>
 							<Tooltip content="How you sell your products">
-								<Text size="2">Order Type</Text>
+								<Text size="2">Order type</Text>
 							</Tooltip>
 							<Select.Root
 								defaultValue={settings.materialsOrderType.toString()}

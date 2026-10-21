@@ -1,35 +1,27 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 .settings_accordion {
-  width: calc(100% / 3);
+  width: 35%;
   height: 100vh;
   position: sticky;
   top: var(--space-9);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--gray-1);
+  color: var(--gray-12);
+}
+
+html.light body,
+html.light .radix-themes[data-is-root-theme="true"] {
+  background: var(--gray-2);
 }
 
 .header_nav {
@@ -50,7 +42,7 @@ body {
   border-bottom: 2px solid var(--accent-10);
 }
 
-.header_nav.dark:hover {
+.header_nav:where(.dark *):hover {
   color: white;
 }
 
@@ -114,18 +106,6 @@ body {
   display: none;
 }
 
-.success {
-  color: green !important;
-}
-
-.warning {
-  color: red !important;
-}
-
-.zero_percent {
-  color: orange !important;
-}
-
 .chevron_default {
   color: var(--accent-a6);
 }
@@ -157,10 +137,6 @@ body {
 .recharts-surface {
   border: none !important;
   outline: none !important;
-}
-
-.settings_accordion {
-  width: 35%;
 }
 
 .required_materials {
