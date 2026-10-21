@@ -25,10 +25,10 @@ export const BuildHeader = ({
     numRuns: number;
 }) => {
     const subsystems = [
-        { label: "Defensive", typeId: 45589, count: def },
-        { label: "Core", typeId: 45626, count: core },
-        { label: "Propulsion", typeId: 45621, count: prop },
-        { label: "Offensive", typeId: 45601, count: off },
+        { label: "Defensive",   typeId: 45589, count: def },
+        { label: "Core",        typeId: 45626, count: core },
+        { label: "Propulsion",  typeId: 45621, count: prop },
+        { label: "Offensive",   typeId: 45601, count: off },
     ];
 
     if(loading) {
