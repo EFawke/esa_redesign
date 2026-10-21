@@ -46,7 +46,7 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="3">Refinery</Text>
+							<Text size="2">Refinery</Text>
 							<Select.Root
 								defaultValue={settings.refinery}
 								onValueChange={(
@@ -78,7 +78,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="3">Rig</Text>
+									<Text size="2">Rig</Text>
 									<Select.Root
 										defaultValue={settings.tataraRig}
 										onValueChange={(
@@ -121,7 +121,7 @@ export const SettingsAccordion = ({
 										style={{ width: "100%" }}
 										justify="between"
 									>
-										<Text size="3">
+										<Text size="2">
 											Material Efficiency Rig
 										</Text>
 										<Select.Root
@@ -168,7 +168,7 @@ export const SettingsAccordion = ({
 										justify="between"
 									>
 										<Tooltip content="Feature in development">
-											<Text size="3">
+											<Text size="2">
 												Time Efficiency Rig
 											</Text>
 										</Tooltip>
@@ -223,7 +223,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="3">System Type</Text>
+								<Text size="2">System Type</Text>
 								<Select.Root
 									defaultValue={settings.refinerySystem}
 									onValueChange={(
@@ -262,7 +262,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="3">
+									<Text size="2">
 										Reaction System Cost Index
 									</Text>
 									<TextField.Root
@@ -299,7 +299,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="3">Facility Tax</Text>
+								<Text size="2">Facility Tax</Text>
 								<TextField.Root
 									style={{ width: "100%" }}
 									type="number"
@@ -351,7 +351,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="3">Manufacturing Complex</Text>
+								<Text size="2">Manufacturing Complex</Text>
 								<Select.Root
 									defaultValue={settings.complex}
 									onValueChange={(
@@ -386,7 +386,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="3">Rig</Text>
+									<Text size="2">Rig</Text>
 									<Select.Root
 										defaultValue={settings.complexLargeRig}
 										onValueChange={(
@@ -430,7 +430,7 @@ export const SettingsAccordion = ({
 										justify="between"
 									>
 										<Tooltip content="Feature in development">
-											<Text size="3">
+											<Text size="2">
 												Time Efficiency Rig
 											</Text>
 										</Tooltip>
@@ -471,7 +471,7 @@ export const SettingsAccordion = ({
 										style={{ width: "100%" }}
 										justify="between"
 									>
-										<Text size="3">
+										<Text size="2">
 											Material Efficiency Rig
 										</Text>
 										<Select.Root
@@ -519,7 +519,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="3">System Type</Text>
+								<Text size="2">System Type</Text>
 								<Select.Root
 									defaultValue={settings.complexSystem}
 									onValueChange={(
@@ -564,7 +564,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="3">
+									<Text size="2">
 										Build System Cost Index
 									</Text>
 									<TextField.Root
@@ -601,7 +601,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="3">Facility Tax</Text>
+								<Text size="2">Facility Tax</Text>
 								<TextField.Root
 									style={{ width: "100%" }}
 									type="number"
@@ -655,7 +655,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Component BPO Material Efficiency">
-									<Text size="3">{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
+									<Text size="2">{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
 								</Tooltip>
 								<Slider
 									name="componentMaterialEfficiency"
@@ -680,7 +680,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Feature in development">
-									<Text size="3">{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
+									<Text size="2">{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
 								</Tooltip>
 								<Slider
 									name="componentTimeEfficiency"
@@ -725,7 +725,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "40%" }}
 							>
-								<Text size="3">Ancient Relic</Text>
+								<Text size="2">Ancient Relic</Text>
 								<Select.Root
 									defaultValue={settings.ancientRelic}
 									onValueChange={(
@@ -765,7 +765,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "40%" }}
 							>
-								<Text size="3">Decryptor</Text>
+								<Text size="2">Decryptor</Text>
 								<Select.Root
 									defaultValue={settings.decryptor}
 									onValueChange={(
@@ -844,7 +844,7 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="3">Core</Text>
+							<Text size="2">Core</Text>
 							<TextField.Root
 								style={{ width: "100%" }}
 								type="number"
@@ -862,7 +862,7 @@ export const SettingsAccordion = ({
 									});
 								}}
 							/>
-							<Text size="3">Defensive</Text>
+							<Text size="2">Defensive</Text>
 							<TextField.Root
 								style={{ width: "100%" }}
 								type="number"
@@ -887,7 +887,7 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="3">Offensive</Text>
+							<Text size="2">Offensive</Text>
 							<TextField.Root
 								style={{ width: "100%" }}
 								type="number"
@@ -905,7 +905,7 @@ export const SettingsAccordion = ({
 									});
 								}}
 							/>
-							<Text size="3">Propulsion</Text>
+							<Text size="2">Propulsion</Text>
 							<TextField.Root
 								style={{ width: "100%" }}
 								type="number"
@@ -951,7 +951,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Reaction slots across all characters">
-									<Text size="3">Reaction Slots</Text>
+									<Text size="2">Reaction Slots</Text>
 								</Tooltip>
 								<TextField.Root
 									style={{ width: "100%" }}
@@ -983,7 +983,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="3">
+									<Text size="2">
 										{`Skill Level (${settings.skillLevel})`}
 									</Text>
 									<Slider
@@ -1017,7 +1017,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Feature in development">
-									<Text size="3">Implant</Text>
+									<Text size="2">Implant</Text>
 								</Tooltip>
 								<Select.Root
 									defaultValue={settings.implant}
@@ -1054,6 +1054,152 @@ export const SettingsAccordion = ({
 					</Flex>
 				</AccordionContent>
 			</Accordion.Item>
+			<Accordion.Item className="AccordionItem" value="item-7">
+				<AccordionTrigger>Trade Hubs</AccordionTrigger>
+				<AccordionContent>
+					<Flex
+						direction="row"
+						align="start"
+						style={{ width: "100%" }}
+						justify="between"
+						mt="2"
+						mb="2"
+					>
+						<Flex
+							direction="column"
+							gap="1"
+							align="start"
+							style={{ width: "40%" }}
+						>
+							<Text size="2">Materials Trade Hub</Text>
+							<Select.Root
+								defaultValue={settings.materialsLocation.toString()}
+								onValueChange={(value) => {
+									setSettings({
+										...settings,
+										materialsLocation: Number(
+											value,
+										) as BuildSettings["materialsLocation"],
+									});
+								}}
+							>
+								<Select.Trigger style={{ width: "100%" }} />
+								<Select.Content style={{ width: "100%" }}>
+									<Select.Group>
+										<Select.Label>Trade Hub</Select.Label>
+										<Select.Item value="10000002">
+											Jita
+										</Select.Item>
+										<Select.Item value="10000043">
+											Amarr
+										</Select.Item>
+										<Select.Item value="10000032">
+											Dodixie
+										</Select.Item>
+										<Select.Item value="10000042">
+											Hek
+										</Select.Item>
+										<Select.Item value="10000030">
+											Rens
+										</Select.Item>
+									</Select.Group>
+								</Select.Content>
+							</Select.Root>
+							<Tooltip content="How you purchase materials">
+								<Text size="2">Material Order Type</Text>
+							</Tooltip>
+							<Select.Root
+								defaultValue={settings.materialsOrderType}
+								onValueChange={(value: "buy" | "sell") => {
+									setSettings({
+										...settings,
+										materialsOrderType: value,
+									});
+								}}
+							>
+								<Select.Trigger style={{ width: "100%" }} />
+								<Select.Content style={{ width: "100%" }}>
+									<Select.Group>
+										<Select.Label>Order type</Select.Label>
+										<Select.Item value="buy">
+											Buy orders
+										</Select.Item>
+										<Select.Item value="sell">
+											Sell orders
+										</Select.Item>
+									</Select.Group>
+								</Select.Content>
+							</Select.Root>
+						</Flex>
+						<Flex
+							direction="column"
+							gap="1"
+							align="start"
+							style={{ width: "40%" }}
+						>
+							<Text size="2">Where you're selling</Text>
+							<Select.Root
+								defaultValue={settings.subsystemsLocation.toString()}
+								onValueChange={(value) => {
+									setSettings({
+										...settings,
+										subsystemsLocation: Number(
+											value,
+										) as BuildSettings["subsystemsLocation"],
+									});
+								}}
+							>
+								<Select.Trigger style={{ width: "100%" }} />
+								<Select.Content style={{ width: "100%" }}>
+									<Select.Group>
+										<Select.Label>Trade Hub</Select.Label>
+										<Select.Item value="10000002">
+											Jita
+										</Select.Item>
+										<Select.Item value="10000043">
+											Amarr
+										</Select.Item>
+										<Select.Item value="10000032">
+											Dodixie
+										</Select.Item>
+										<Select.Item value="10000042">
+											Hek
+										</Select.Item>
+										<Select.Item value="10000030">
+											Rens
+										</Select.Item>
+									</Select.Group>
+								</Select.Content>
+							</Select.Root>
+							<Tooltip content="How you sell your products">
+								<Text size="2">Order Type</Text>
+							</Tooltip>
+							<Select.Root
+								defaultValue={settings.materialsOrderType.toString()}
+								onValueChange={(value: "buy" | "sell") => {
+									setSettings({
+										...settings,
+										materialsOrderType: value,
+									});
+								}}
+							>
+								<Select.Trigger style={{ width: "100%" }} />
+								<Select.Content style={{ width: "100%" }}>
+									<Select.Group>
+										<Select.Label>Order type</Select.Label>
+										<Select.Item value="buy">
+											Buy orders
+										</Select.Item>
+										<Select.Item value="sell">
+											Sell orders
+										</Select.Item>
+									</Select.Group>
+								</Select.Content>
+							</Select.Root>
+						</Flex>
+					</Flex>
+				</AccordionContent>
+			</Accordion.Item>
 		</Accordion.Root>
 	);
 };
@@ -1066,8 +1212,15 @@ const AccordionTrigger = function AccordionTrigger({
 	forwardedRef?: Ref<HTMLButtonElement> | undefined;
 }) {
 	return (
-		<Accordion.Header className="AccordionHeader" style={{background: 'transparent'}}>
-			<Accordion.Trigger style={{background: 'transparent'}} className="AccordionTrigger" ref={forwardedRef}>
+		<Accordion.Header
+			className="AccordionHeader"
+			style={{ background: "transparent" }}
+		>
+			<Accordion.Trigger
+				style={{ background: "transparent" }}
+				className="AccordionTrigger"
+				ref={forwardedRef}
+			>
 				{children}
 				<ChevronDownIcon className="AccordionChevron" aria-hidden />
 			</Accordion.Trigger>

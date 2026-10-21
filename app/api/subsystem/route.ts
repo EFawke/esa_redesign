@@ -2,11 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import axios from "axios";
 import { namesAndIds } from "@/app/utils/namesAndIds";
-import {type BuildSettings, DEFAULT_SETTINGS} from "@/app/utils/user_settings";
-import { checkCookie } from "@/app/utils/user_settings";
+import { type BuildSettings } from "@/app/utils/user_settings";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
-    let data: {id: number};
+    let data: {
+        id: number,
+        settings: BuildSettings
+    };
     
     try {
         data = await request.json();
@@ -17,22 +19,19 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         }
         return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
     }
-    
-    const cookieStore = await cookies();
-    const stored = cookieStore.get("buildSettings");
-    const settings: BuildSettings = checkCookie(stored);
-    if(!stored) cookieStore.set('buildSettings', JSON.stringify(DEFAULT_SETTINGS));
 
     const name = namesAndIds.find((subsystem) => subsystem.id === data.id)?.name;
     const url = `${process.env.API_URL}api/subsystem/${data.id}`;
 
-    settings.defensiveVolume = 1;
-    settings.coreVolume = 1;
-    settings.propulsionVolume = 1;
-    settings.offensiveVolume = 1;
+    const storedSettings = data.settings;
+
+    storedSettings.defensiveVolume = 1;
+    storedSettings.coreVolume = 1;
+    storedSettings.propulsionVolume = 1;
+    storedSettings.offensiveVolume = 1;
 
     try {
-        const res = await axios.post(url, {...settings, name}, {signal: request.signal});
+        const res = await axios.post(url, {...storedSettings, name}, {signal: request.signal});
         return NextResponse.json(res.data);
     }
     catch (err) {

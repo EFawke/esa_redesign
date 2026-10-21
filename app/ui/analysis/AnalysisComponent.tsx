@@ -100,7 +100,6 @@ export const AnalysisComponent = ({
                                                                             textDecoration: "underline"
                                                                         }}
                                                                         href="/build"
-                                                                        target="_blank"
                                                                     >
                                                                         build
                                                                     </NextLink>{" "}

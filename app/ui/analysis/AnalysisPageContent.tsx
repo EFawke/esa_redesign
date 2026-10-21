@@ -5,6 +5,7 @@ import { AnalysisComponent } from "./AnalysisComponent";
 import { Chart } from "./Chart";
 import { gary } from "../../utils/gary";
 import { Switch, Skeleton, Table, Text, Flex, Card } from "@radix-ui/themes";
+import { BuildSettings } from "@/app/utils/user_settings";
 
 const AnalysisSkeleton = ({ rows = 8 }: { rows?: number }) => (
     <Card className="box_shadowed">
@@ -114,7 +115,7 @@ const ChartSkeleton = () => {
     );
 };
 
-export function AnalysisPageContent({ id }: { id: number }) {
+export function AnalysisPageContent({ id, settings }: { id: number, settings: BuildSettings }) {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<ChartData[] | []>([]);
     const [error, setError] = useState(null);
@@ -127,7 +128,7 @@ export function AnalysisPageContent({ id }: { id: number }) {
         setError(null);
 
         gary<AnalysisResponse>("/api/subsystem", {
-            json: { id },
+            json: { id, settings },
             signal: controller.signal,
         })
             .then((res: AnalysisResponse) => {
