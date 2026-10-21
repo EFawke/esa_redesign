@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import axios from "axios";
 import { namesAndIds } from "@/app/utils/namesAndIds";
 import {type BuildSettings, DEFAULT_SETTINGS} from "@/app/utils/user_settings";
+import { checkCookie } from "@/app/utils/user_settings";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
     let data: {id: number};
@@ -19,7 +20,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     
     const cookieStore = await cookies();
     const stored = cookieStore.get("buildSettings");
-    const settings: BuildSettings = stored ? JSON.parse(stored.value) : DEFAULT_SETTINGS;
+    const settings: BuildSettings = checkCookie(stored);
     if(!stored) cookieStore.set('buildSettings', JSON.stringify(DEFAULT_SETTINGS));
 
     const name = namesAndIds.find((subsystem) => subsystem.id === data.id)?.name;

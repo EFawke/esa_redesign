@@ -3,14 +3,13 @@ import { Flex, Container } from "@radix-ui/themes";
 import { cookies } from "next/headers";
 import { DEFAULT_SETTINGS, type BuildSettings } from "../utils/user_settings";
 import { Toast } from "radix-ui";
+import { checkCookie } from '@/app/utils/user_settings'
 
 export default async function Page() {
     const cookieStore = await cookies();
     let buildSettings = cookieStore.get("buildSettings");
-    const settings: BuildSettings =
-        buildSettings === undefined
-            ? DEFAULT_SETTINGS
-            : JSON.parse(buildSettings.value);
+
+    const settings: BuildSettings = checkCookie(buildSettings);
 
     return (
         <Flex mt="1" direction="column">
