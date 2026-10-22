@@ -1179,11 +1179,11 @@ export const SettingsAccordion = ({
 								<Text size="2">Order type</Text>
 							</Tooltip>
 							<Select.Root
-								defaultValue={settings.materialsOrderType.toString()}
+								defaultValue={settings.subsystemsOrderType.toString()}
 								onValueChange={(value: "buy" | "sell") => {
 									setSettings({
 										...settings,
-										materialsOrderType: value,
+										subsystemsOrderType: value,
 									});
 								}}
 							>
