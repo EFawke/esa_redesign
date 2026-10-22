@@ -7,7 +7,7 @@ export default function Home() {
     <Flex mt="1" direction="column">
       <Container px={{ initial: "4", sm: "6" }} mb="9" mt="9">
         <Flex direction="column" gap="9" align="center">
-          <Flex direction="column" gap="2" align="center">
+          <Flex direction="column" gap="2" align="center" className="hero_main">
             <Heading size="9" className="appear_on_load">
               EVE Subsystem{" "}
               <Em>

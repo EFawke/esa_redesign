@@ -180,9 +180,55 @@ html.light .radix-themes[data-is-root-theme="true"] {
   }
 }
 
+.build_header_container {
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.overview_datalist {
+  width: 20%;
+}
+
+.subsystem_counter {
+  width: 60%;
+}
+
 @media (max-width: 678px) {
+  .overview_datalist {
+    width: 100%;
+  }
+  .subsystem_counter {
+    width: 100%;
+  }
+
 
   .build_header_container {
     flex-direction: column;
   }
+}
+
+#build_nav_mobile {
+  display: none;
+}
+
+#build_nav_desktop {
+  display: flex;
+}
+
+@media (max-width: 728px) {
+  #build_nav_mobile {
+    display: flex;
+  }
+  #build_nav_desktop {
+    display: none;
+  }
+  .hero_main {
+    text-align: start;
+    align-items: start;
+  }
+  
 }

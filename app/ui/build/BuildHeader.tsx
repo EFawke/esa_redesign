@@ -42,15 +42,10 @@ export const BuildHeader = ({
             </Heading>
             <Card style={{ width: "100%" }} className="box_shadowed">
                 <Flex
-                    justify="between"
-                    align="center"
-                    gap="6"
-                    wrap="wrap"
                     p="2"
-                    style={{width: '100%'}}
                     className="build_header_container"
                 >
-                    <DataList.Root style={{width: '20%'}}>
+                    <DataList.Root className="overview_datalist">
                         <DataList.Item>
                             <DataList.Label minWidth="140px"><Text size='3'>Materials</Text></DataList.Label>
                             <DataList.Value>
@@ -69,7 +64,7 @@ export const BuildHeader = ({
                         </DataList.Item>
                     </DataList.Root>
 
-                    <Flex gap="8" align="center" justify='center' style={{width: '60%'}}>
+                    <Flex gap="8" align="center" justify='center' className="subsystem_counter">
                         {subsystems.map((s) => (
                             <Tooltip key={s.label} content={s.label}>
                                 <Flex direction="column" gap="1" align="center">

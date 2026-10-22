@@ -67,10 +67,18 @@ export const Header = ({
                             Market
                         </Link>
                         <Link
+                            id='build_nav_desktop'
                             href='/build'
                             className={` ${props.appearance} header_nav ${pathname === "/build" ? "active" : ""}`}
                         >
                             Build Calculator
+                        </Link>
+                        <Link
+                            id='build_nav_mobile'
+                            href='/build'
+                            className={` ${props.appearance} header_nav ${pathname === "/build" ? "active" : ""}`}
+                        >
+                            Industry
                         </Link>
                     </Flex>
                 </Flex>
