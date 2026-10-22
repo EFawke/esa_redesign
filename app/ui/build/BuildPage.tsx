@@ -43,12 +43,21 @@ const EmptyState = () => {
     );
 };
 
+const isEmptyVolume = (v: unknown) => !Number(v);
+
 export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
     const [settings, setSettings] = useState<BuildSettings>(saved);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<any | null>(null);
     const [debouncedSettings, setDebouncedSettings] =
         useState<BuildSettings>(saved);
+
+    const allEmpty = [
+            debouncedSettings.coreVolume,
+            debouncedSettings.defensiveVolume,
+            debouncedSettings.offensiveVolume,
+            debouncedSettings.propulsionVolume,
+        ].every(isEmptyVolume);
 
     useEffect(() => {
         if (settings === debouncedSettings) {
@@ -65,9 +74,16 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
         };
     }, [settings]);
 
+
+
     useEffect(() => {
         const controller = new AbortController();
         setLoading(true);
+
+        if(allEmpty){
+            setLoading(false);
+            return;
+        }
 
         gary<BuildSettings>("/api/build", {
             json: debouncedSettings,
@@ -101,10 +117,8 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                     setSettings={setSettings}
                 />
             </Flex>
-            {debouncedSettings.coreVolume === 0 || !debouncedSettings.coreVolume &&
-            debouncedSettings.defensiveVolume === 0 || !debouncedSettings.defensiveVolume &&
-            debouncedSettings.offensiveVolume === 0 || !debouncedSettings.offensiveVolume &&
-            debouncedSettings.propulsionVolume === 0 || !debouncedSettings.propulsionVolume ? (
+            {
+            allEmpty ? (
                 <EmptyState />
             ) : (
                 <Flex

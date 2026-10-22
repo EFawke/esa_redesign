@@ -147,8 +147,27 @@ html.light .radix-themes[data-is-root-theme="true"] {
   flex-direction: row;
 }
 
-/* if screen is less than 1111px wide */
+.accordion_label {
+  font-size: var(--font-size-2);
+}
+
+.AccordionContentText {
+  font-size: var(--font-size-2);
+}
+
 @media (max-width: 1111px) {
+  .AccordionContentText {
+    font-size: var(--font-size-4) !important;
+  }
+  .accordion_label {
+    font-size: var(--font-size-4) !important;
+  }
+  .styled_accordion {
+    font-size: var(--font-size-4) !important;
+  }
+  .SelectTrigger {
+    font-size: var(--font-size-4) !important;
+  }
 
   .analysis_page_layout {
     flex-direction: column;
@@ -230,5 +249,4 @@ html.light .radix-themes[data-is-root-theme="true"] {
     text-align: start;
     align-items: start;
   }
-  
 }

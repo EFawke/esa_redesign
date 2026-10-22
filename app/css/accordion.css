@@ -69,7 +69,8 @@ h3 {
 
 .AccordionContent {
 	overflow: hidden;
-	/* font-size: 15px; */
+	font-size: 100px;
+	padding: 0rem;
 	color: var(--gray-12);
 	background-color: var(--mauve-2);
 }

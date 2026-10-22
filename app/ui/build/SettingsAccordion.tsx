@@ -46,7 +46,7 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="2">Refinery</Text>
+							<Text className='accordion_label'>Refinery</Text>
 							<Select.Root
 								defaultValue={settings.refinery}
 								onValueChange={(
@@ -58,14 +58,14 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-								<Select.Trigger style={{ width: "100%" }} />
-								<Select.Content style={{ width: "100%" }}>
+								<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+								<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 									<Select.Group>
-										<Select.Label>Refinery</Select.Label>
-										<Select.Item value="Athanor">
+										<Select.Label className="styled_accordion">Refinery</Select.Label>
+										<Select.Item value="Athanor" className="styled_accordion">
 											Athanor
 										</Select.Item>
-										<Select.Item value="Tatara">
+										<Select.Item value="Tatara" className="styled_accordion">
 											Tatara
 										</Select.Item>
 									</Select.Group>
@@ -78,7 +78,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="2">Rig</Text>
+									<Text className='accordion_label'>Rig</Text>
 									<Select.Root
 										defaultValue={settings.tataraRig}
 										onValueChange={(
@@ -91,20 +91,22 @@ export const SettingsAccordion = ({
 										}}
 									>
 										<Select.Trigger
+											className="styled_accordion"
 											style={{ width: "100%" }}
 										/>
 										<Select.Content
+											className="styled_accordion"
 											style={{ width: "100%" }}
 										>
 											<Select.Group>
-												<Select.Label>Rig</Select.Label>
-												<Select.Item value="None">
+												<Select.Label className="styled_accordion">Rig</Select.Label>
+												<Select.Item value="None" className="styled_accordion">
 													None
 												</Select.Item>
-												<Select.Item value="T1">
+												<Select.Item value="T1" className="styled_accordion">
 													T1
 												</Select.Item>
-												<Select.Item value="T2">
+												<Select.Item value="T2" className="styled_accordion">
 													T2
 												</Select.Item>
 											</Select.Group>
@@ -121,7 +123,7 @@ export const SettingsAccordion = ({
 										style={{ width: "100%" }}
 										justify="between"
 									>
-										<Text size="2">
+										<Text className='accordion_label'>
 											Material Efficiency Rig
 										</Text>
 										<Select.Root
@@ -138,22 +140,24 @@ export const SettingsAccordion = ({
 											}}
 										>
 											<Select.Trigger
+												className="styled_accordion"
 												style={{ width: "100%" }}
 											/>
 											<Select.Content
+												className="styled_accordion"
 												style={{ width: "100%" }}
 											>
 												<Select.Group>
-													<Select.Label>
+													<Select.Label className="styled_accordion">
 														M.E. Rig
 													</Select.Label>
-													<Select.Item value="None">
+													<Select.Item value="None" className="styled_accordion">
 														None
 													</Select.Item>
-													<Select.Item value="T1">
+													<Select.Item value="T1" className="styled_accordion">
 														T1
 													</Select.Item>
-													<Select.Item value="T2">
+													<Select.Item value="T2" className="styled_accordion">
 														T2
 													</Select.Item>
 												</Select.Group>
@@ -168,7 +172,7 @@ export const SettingsAccordion = ({
 										justify="between"
 									>
 										<Tooltip content="Feature in development">
-											<Text size="2">
+											<Text className='accordion_label'>
 												Time Efficiency Rig
 											</Text>
 										</Tooltip>
@@ -186,22 +190,24 @@ export const SettingsAccordion = ({
 											}}
 										>
 											<Select.Trigger
+												className="styled_accordion"
 												style={{ width: "100%" }}
 											/>
 											<Select.Content
+												className="styled_accordion"
 												style={{ width: "100%" }}
 											>
 												<Select.Group>
-													<Select.Label>
+													<Select.Label className="styled_accordion">
 														T.E. Rig
 													</Select.Label>
-													<Select.Item value="None">
+													<Select.Item value="None" className="styled_accordion">
 														None
 													</Select.Item>
-													<Select.Item value="T1">
+													<Select.Item value="T1" className="styled_accordion">
 														T1
 													</Select.Item>
-													<Select.Item value="T2">
+													<Select.Item value="T2" className="styled_accordion">
 														T2
 													</Select.Item>
 												</Select.Group>
@@ -223,7 +229,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="2">System Type</Text>
+								<Text className='accordion_label'>System Type</Text>
 								<Select.Root
 									defaultValue={settings.refinerySystem}
 									onValueChange={(
@@ -236,19 +242,19 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }} />
-									<Select.Content style={{ width: "100%" }}>
+									<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+									<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 										<Select.Group>
-											<Select.Label>
+											<Select.Label className="styled_accordion">
 												Location
 											</Select.Label>
-											<Select.Item value="lowsec">
+											<Select.Item value="lowsec" className="styled_accordion">
 												Low Sec
 											</Select.Item>
-											<Select.Item value="nullsec">
+											<Select.Item value="nullsec" className="styled_accordion">
 												Null Sec
 											</Select.Item>
-											<Select.Item value="wormhole">
+											<Select.Item value="wormhole" className="styled_accordion">
 												Wormhole
 											</Select.Item>
 										</Select.Group>
@@ -262,10 +268,11 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="2">
+									<Text className='accordion_label'>
 										Reaction System Cost Index
 									</Text>
 									<TextField.Root
+										className="styled_accordion"
 										style={{ width: "100%" }}
 										type="number"
 										min={0.14}
@@ -299,8 +306,9 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="2">Facility Tax</Text>
+								<Text className='accordion_label'>Facility Tax</Text>
 								<TextField.Root
+									className="styled_accordion"
 									style={{ width: "100%" }}
 									type="number"
 									min={0}
@@ -351,7 +359,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="2">Manufacturing Complex</Text>
+								<Text className='accordion_label'>Manufacturing Complex</Text>
 								<Select.Root
 									defaultValue={settings.complex}
 									onValueChange={(
@@ -363,16 +371,16 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }} />
-									<Select.Content style={{ width: "100%" }}>
+									<Select.Trigger className="styled_accordion" style={{ width: "100%" }}/>
+									<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 										<Select.Group>
-											<Select.Label>
+											<Select.Label className="styled_accordion">
 												Manufacturing Complex
 											</Select.Label>
-											<Select.Item value="Raitaru">
+											<Select.Item value="Raitaru" className="styled_accordion">
 												Raitaru
 											</Select.Item>
-											<Select.Item value="Azbel">
+											<Select.Item value="Azbel" className="styled_accordion">
 												Azbel
 											</Select.Item>
 										</Select.Group>
@@ -386,7 +394,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="2">Rig</Text>
+									<Text className='accordion_label'>Rig</Text>
 									<Select.Root
 										defaultValue={settings.complexLargeRig}
 										onValueChange={(
@@ -399,20 +407,22 @@ export const SettingsAccordion = ({
 										}}
 									>
 										<Select.Trigger
+											className="styled_accordion"
 											style={{ width: "100%" }}
 										/>
 										<Select.Content
+											className="styled_accordion"
 											style={{ width: "100%" }}
 										>
 											<Select.Group>
-												<Select.Label>Rig</Select.Label>
-												<Select.Item value="None">
+												<Select.Label className="styled_accordion">Rig</Select.Label>
+												<Select.Item value="None" className="styled_accordion">
 													None
 												</Select.Item>
-												<Select.Item value="T1">
+												<Select.Item value="T1" className="styled_accordion">
 													T1
 												</Select.Item>
-												<Select.Item value="T2">
+												<Select.Item value="T2" className="styled_accordion">
 													T2
 												</Select.Item>
 											</Select.Group>
@@ -430,7 +440,7 @@ export const SettingsAccordion = ({
 										justify="between"
 									>
 										<Tooltip content="Feature in development">
-											<Text size="2">
+											<Text className='accordion_label'>
 												Time Efficiency Rig
 											</Text>
 										</Tooltip>
@@ -445,19 +455,19 @@ export const SettingsAccordion = ({
 												});
 											}}
 										>
-											<Select.Trigger />
-											<Select.Content>
+											<Select.Trigger className="styled_accordion" style={{width: '100%'}} />
+											<Select.Content className="styled_accordion" style={{width: '100%'}}>
 												<Select.Group>
-													<Select.Label>
+													<Select.Label className="styled_accordion">
 														Time Efficiency Rig
 													</Select.Label>
-													<Select.Item value="None">
+													<Select.Item value="None" className="styled_accordion">
 														None
 													</Select.Item>
-													<Select.Item value="T1">
+													<Select.Item value="T1" className="styled_accordion">
 														T1
 													</Select.Item>
-													<Select.Item value="T2">
+													<Select.Item value="T2" className="styled_accordion">
 														T2
 													</Select.Item>
 												</Select.Group>
@@ -471,7 +481,7 @@ export const SettingsAccordion = ({
 										style={{ width: "100%" }}
 										justify="between"
 									>
-										<Text size="2">
+										<Text className='accordion_label'>
 											Material Efficiency Rig
 										</Text>
 										<Select.Root
@@ -485,19 +495,19 @@ export const SettingsAccordion = ({
 												});
 											}}
 										>
-											<Select.Trigger />
-											<Select.Content>
+											<Select.Trigger className="styled_accordion" style={{width: '100%'}}/>
+											<Select.Content className="styled_accordion" style={{width: '100%'}}>
 												<Select.Group>
-													<Select.Label>
+													<Select.Label className="styled_accordion">
 														Material Efficiency Rig
 													</Select.Label>
-													<Select.Item value="None">
+													<Select.Item value="None" className="styled_accordion">
 														None
 													</Select.Item>
-													<Select.Item value="T1">
+													<Select.Item value="T1" className="styled_accordion">
 														T1
 													</Select.Item>
-													<Select.Item value="T2">
+													<Select.Item value="T2" className="styled_accordion">
 														T2
 													</Select.Item>
 												</Select.Group>
@@ -519,7 +529,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="2">System Type</Text>
+								<Text className='accordion_label'>System Type</Text>
 								<Select.Root
 									defaultValue={settings.complexSystem}
 									onValueChange={(
@@ -535,22 +545,22 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }} />
-									<Select.Content style={{ width: "100%" }}>
+									<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+									<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 										<Select.Group>
-											<Select.Label>
+											<Select.Label className="styled_accordion">
 												Location
 											</Select.Label>
-											<Select.Item value="lowsec">
+											<Select.Item value="lowsec" className="styled_accordion">
 												Low Sec
 											</Select.Item>
-											<Select.Item value="nullsec">
+											<Select.Item value="nullsec" className="styled_accordion">
 												Null Sec
 											</Select.Item>
-											<Select.Item value="wormhole">
+											<Select.Item value="wormhole" className="styled_accordion">
 												Wormhole
 											</Select.Item>
-											<Select.Item value="highsec">
+											<Select.Item value="highsec" className="styled_accordion">
 												High Sec
 											</Select.Item>
 										</Select.Group>
@@ -564,10 +574,11 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="2">
+									<Text className='accordion_label'>
 										Build System Cost Index
 									</Text>
 									<TextField.Root
+										className="styled_accordion"
 										style={{ width: "100%" }}
 										type="number"
 										placeholder="0.14"
@@ -601,8 +612,9 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text size="2">Facility Tax</Text>
+								<Text className='accordion_label'>Facility Tax</Text>
 								<TextField.Root
+									className="styled_accordion"
 									style={{ width: "100%" }}
 									type="number"
 									placeholder="0"
@@ -655,7 +667,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Component BPO Material Efficiency">
-									<Text size="2">{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
+									<Text className='accordion_label'>{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
 								</Tooltip>
 								<Slider
 									name="componentMaterialEfficiency"
@@ -680,7 +692,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Feature in development">
-									<Text size="2">{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
+									<Text className='accordion_label'>{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
 								</Tooltip>
 								<Slider
 									name="componentTimeEfficiency"
@@ -725,7 +737,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "40%" }}
 							>
-								<Text size="2">Ancient Relic</Text>
+								<Text className='accordion_label'>Ancient Relic</Text>
 								<Select.Root
 									defaultValue={settings.ancientRelic}
 									onValueChange={(
@@ -740,19 +752,19 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }} />
-									<Select.Content style={{ width: "100%" }}>
+									<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+									<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 										<Select.Group>
-											<Select.Label>
+											<Select.Label className="styled_accordion">
 												Ancient Relic
 											</Select.Label>
-											<Select.Item value="Wrecked">
+											<Select.Item value="Wrecked" className="styled_accordion">
 												Wrecked
 											</Select.Item>
-											<Select.Item value="Malfunctioning">
+											<Select.Item value="Malfunctioning" className="styled_accordion">
 												Malfunctioning
 											</Select.Item>
-											<Select.Item value="Intact">
+											<Select.Item value="Intact" className="styled_accordion">
 												Intact
 											</Select.Item>
 										</Select.Group>
@@ -765,7 +777,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "40%" }}
 							>
-								<Text size="2">Decryptor</Text>
+								<Text className='accordion_label'>Decryptor</Text>
 								<Select.Root
 									defaultValue={settings.decryptor}
 									onValueChange={(
@@ -786,37 +798,37 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }} />
-									<Select.Content style={{ width: "100%" }}>
+									<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+									<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 										<Select.Group>
-											<Select.Label>
+											<Select.Label className="styled_accordion">
 												Decryptor
 											</Select.Label>
-											<Select.Item value="None">
+											<Select.Item value="None" className="styled_accordion">
 												None
 											</Select.Item>
-											<Select.Item value="Accelerant Decryptor">
+											<Select.Item value="Accelerant Decryptor" className="styled_accordion">
 												Accelerant Decryptor
 											</Select.Item>
-											<Select.Item value="Attainment Decryptor">
+											<Select.Item value="Attainment Decryptor" className="styled_accordion">
 												Attainment Decryptor
 											</Select.Item>
-											<Select.Item value="Augmentation Decryptor">
+											<Select.Item value="Augmentation Decryptor" className="styled_accordion">
 												Augmentation Decryptor
 											</Select.Item>
-											<Select.Item value="Optimized Attainment Decryptor">
+											<Select.Item value="Optimized Attainment Decryptor" className="styled_accordion">
 												Optimized Attainment Decryptor
 											</Select.Item>
-											<Select.Item value="Optimized Augmentation Decryptor">
+											<Select.Item value="Optimized Augmentation Decryptor" className="styled_accordion">
 												Optimized Augmentation Decryptor
 											</Select.Item>
-											<Select.Item value="Parity Decryptor">
+											<Select.Item value="Parity Decryptor" className="styled_accordion">
 												Parity Decryptor
 											</Select.Item>
-											<Select.Item value="Process Decryptor">
+											<Select.Item value="Process Decryptor" className="styled_accordion">
 												Process Decryptor
 											</Select.Item>
-											<Select.Item value="Symmetry Decryptor">
+											<Select.Item value="Symmetry Decryptor" className="styled_accordion">
 												Symmetry Decryptor
 											</Select.Item>
 										</Select.Group>
@@ -844,8 +856,9 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="2">Core</Text>
+							<Text className='accordion_label'>Core</Text>
 							<TextField.Root
+								className="styled_accordion"
 								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
@@ -862,8 +875,9 @@ export const SettingsAccordion = ({
 									});
 								}}
 							/>
-							<Text size="2">Defensive</Text>
+							<Text className='accordion_label'>Defensive</Text>
 							<TextField.Root
+								className="styled_accordion"
 								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
@@ -887,8 +901,9 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
-							<Text size="2">Offensive</Text>
+							<Text className='accordion_label'>Offensive</Text>
 							<TextField.Root
+								className="styled_accordion"
 								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
@@ -905,8 +920,9 @@ export const SettingsAccordion = ({
 									});
 								}}
 							/>
-							<Text size="2">Propulsion</Text>
+							<Text className='accordion_label'>Propulsion</Text>
 							<TextField.Root
+								className="styled_accordion"
 								style={{ width: "100%" }}
 								type="number"
 								placeholder="0"
@@ -951,9 +967,10 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Reaction slots across all characters">
-									<Text size="2">Reaction Slots</Text>
+									<Text className='accordion_label'>Reaction Slots</Text>
 								</Tooltip>
 								<TextField.Root
+									className="styled_accordion"
 									style={{ width: "100%" }}
 									type="number"
 									placeholder="0"
@@ -983,7 +1000,7 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text size="2">
+									<Text className='accordion_label'>
 										{`Skill Level (${settings.skillLevel})`}
 									</Text>
 									<Slider
@@ -1017,7 +1034,7 @@ export const SettingsAccordion = ({
 								style={{ width: "100%" }}
 							>
 								<Tooltip content="Feature in development">
-									<Text size="2">Implant</Text>
+									<Text className='accordion_label'>Implant</Text>
 								</Tooltip>
 								<Select.Root
 									defaultValue={settings.implant}
@@ -1030,20 +1047,20 @@ export const SettingsAccordion = ({
 										});
 									}}
 								>
-									<Select.Trigger style={{ width: "100%" }} />
-									<Select.Content style={{ width: "100%" }}>
+									<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+									<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 										<Select.Group>
-											<Select.Label>Implant</Select.Label>
-											<Select.Item value="None">
+											<Select.Label className="styled_accordion">Implant</Select.Label>
+											<Select.Item value="None" className="styled_accordion">
 												None
 											</Select.Item>
-											<Select.Item value="1%">
+											<Select.Item value="1%" className="styled_accordion">
 												1%
 											</Select.Item>
-											<Select.Item value="2%">
+											<Select.Item value="2%" className="styled_accordion">
 												2%
 											</Select.Item>
-											<Select.Item value="4%">
+											<Select.Item value="4%" className="styled_accordion">
 												4%
 											</Select.Item>
 										</Select.Group>
@@ -1072,7 +1089,7 @@ export const SettingsAccordion = ({
 							style={{ width: "40%" }}
 						>
 							<Tooltip content="Where you purchase materials">
-							<Text size="2">Buying inputs</Text>
+								<Text className='accordion_label'>Buying inputs</Text>
 							</Tooltip>
 							<Select.Root
 								defaultValue={settings.materialsLocation.toString()}
@@ -1085,30 +1102,30 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-								<Select.Trigger style={{ width: "100%" }} />
-								<Select.Content style={{ width: "100%" }}>
+								<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+								<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 									<Select.Group>
-										<Select.Label>Trade Hub</Select.Label>
-										<Select.Item value="10000002">
+										<Select.Label className="styled_accordion">Trade Hub</Select.Label>
+										<Select.Item value="10000002" className="styled_accordion">
 											Jita
 										</Select.Item>
-										<Select.Item value="10000043">
+										<Select.Item value="10000043" className="styled_accordion">
 											Amarr
 										</Select.Item>
-										<Select.Item value="10000032">
+										<Select.Item value="10000032" className="styled_accordion">
 											Dodixie
 										</Select.Item>
-										<Select.Item value="10000042">
+										<Select.Item value="10000042" className="styled_accordion">
 											Hek
 										</Select.Item>
-										<Select.Item value="10000030">
+										<Select.Item value="10000030" className="styled_accordion">
 											Rens
 										</Select.Item>
 									</Select.Group>
 								</Select.Content>
 							</Select.Root>
 							<Tooltip content="How you purchase materials">
-								<Text size="2">Order type</Text>
+								<Text className='accordion_label'>Order type</Text>
 							</Tooltip>
 							<Select.Root
 								defaultValue={settings.materialsOrderType}
@@ -1119,14 +1136,14 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-								<Select.Trigger style={{ width: "100%" }} />
-								<Select.Content style={{ width: "100%" }}>
+								<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+								<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 									<Select.Group>
-										<Select.Label>Order type</Select.Label>
-										<Select.Item value="buy">
+										<Select.Label className="styled_accordion">Order type</Select.Label>
+										<Select.Item value="buy" className="styled_accordion">
 											Buy orders
 										</Select.Item>
-										<Select.Item value="sell">
+										<Select.Item value="sell" className="styled_accordion">
 											Sell orders
 										</Select.Item>
 									</Select.Group>
@@ -1140,7 +1157,7 @@ export const SettingsAccordion = ({
 							style={{ width: "40%" }}
 						>
 							<Tooltip content="Where you sell your subsystems">
-								<Text size="2">Selling outputs</Text>
+								<Text className='accordion_label'>Selling outputs</Text>
 							</Tooltip>
 							<Select.Root
 								defaultValue={settings.subsystemsLocation.toString()}
@@ -1153,30 +1170,30 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-								<Select.Trigger style={{ width: "100%" }} />
-								<Select.Content style={{ width: "100%" }}>
+								<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+								<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 									<Select.Group>
-										<Select.Label>Trade Hub</Select.Label>
-										<Select.Item value="10000002">
+										<Select.Label className="styled_accordion">Trade Hub</Select.Label>
+										<Select.Item value="10000002" className="styled_accordion">
 											Jita
 										</Select.Item>
-										<Select.Item value="10000043">
+										<Select.Item value="10000043" className="styled_accordion">
 											Amarr
 										</Select.Item>
-										<Select.Item value="10000032">
+										<Select.Item value="10000032" className="styled_accordion">
 											Dodixie
 										</Select.Item>
-										<Select.Item value="10000042">
+										<Select.Item value="10000042" className="styled_accordion">
 											Hek
 										</Select.Item>
-										<Select.Item value="10000030">
+										<Select.Item value="10000030" className="styled_accordion">
 											Rens
 										</Select.Item>
 									</Select.Group>
 								</Select.Content>
 							</Select.Root>
 							<Tooltip content="How you sell your products">
-								<Text size="2">Order type</Text>
+								<Text className='accordion_label'>Order type</Text>
 							</Tooltip>
 							<Select.Root
 								defaultValue={settings.subsystemsOrderType.toString()}
@@ -1187,14 +1204,14 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-								<Select.Trigger style={{ width: "100%" }} />
-								<Select.Content style={{ width: "100%" }}>
+								<Select.Trigger className="styled_accordion" style={{ width: "100%" }} />
+								<Select.Content className="styled_accordion" style={{ width: "100%" }}>
 									<Select.Group>
-										<Select.Label>Order type</Select.Label>
-										<Select.Item value="buy">
+										<Select.Label className="styled_accordion">Order type</Select.Label>
+										<Select.Item value="buy" className="styled_accordion">
 											Buy orders
 										</Select.Item>
-										<Select.Item value="sell">
+										<Select.Item value="sell" className="styled_accordion">
 											Sell orders
 										</Select.Item>
 									</Select.Group>
