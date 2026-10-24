@@ -3,15 +3,7 @@ import { Toast } from "radix-ui";
 import "@/app/css/toast.css";
 import { CopyIcon } from "@radix-ui/react-icons";
 import { IconButton } from "@radix-ui/themes";
-
-export interface ShoppingRow {
-    id: number;
-    name: string;
-    quantity: number;
-    unitPrice: number;
-    lineTotal: number;
-    percentageChange?: number;
-}
+import { ShoppingRow } from "./BuildPage";
 
 const MaterialsToast = ({data}: {data: ShoppingRow[]}) => {
     const [open, setOpen] = useState(false);

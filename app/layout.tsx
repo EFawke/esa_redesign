@@ -49,7 +49,7 @@ export default async function RootLayout({
             gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID}');
           `}
         </Script>
-        <Script id="set-theme" strategy="beforeInteractive">
+        {/* <Script id="set-theme" strategy="beforeInteractive">
           {`
             (function () {
               try {
@@ -61,7 +61,7 @@ export default async function RootLayout({
               } catch (e) {}
             })();
           `}
-        </Script>
+        </Script> */}
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider

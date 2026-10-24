@@ -16,7 +16,9 @@ import { Toast } from "radix-ui";
 import { ComponentsTable } from "./ComponentsTable";
 import { ReactionSchedule } from "./ReactionSchedule";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-interface MaterialsRow {
+import { MaterialsInput } from "./MaterialsInput";
+
+export interface MaterialsRow {
     percentageChange?: number;
     lineTotal?: number;
     unitPrice?: number;
@@ -25,18 +27,48 @@ interface MaterialsRow {
     id: number;
 }
 
+export interface ShoppingRow {
+    id: number;
+    name: string;
+    quantity: number;
+    unitPrice: number;
+    lineTotal: number;
+    percentageChange?: number;
+}
+
+export interface HangarContent {
+    name: string;
+    quantity: number;
+}
+
 const EmptyState = () => {
     return (
-        <Flex
-            direction="column"
-            className="required_materials"
-        >
+        <Flex direction="column" className="required_materials">
             <Heading mt="5" mb="4" size="5">
                 Overview
             </Heading>
             <Card style={{ width: "100%" }} className="box_shadowed">
-                <Flex mt="9" mb="9" align="center" justify="center" direction='row' gap='2'>
-                <ArrowLeftIcon style={{color: 'var(--accent-a11)'}}/><Text>Update your <span style={{color: 'var(--accent-a11)', textDecoration: 'underline'}}>Build Volume</span> to get something here.</Text>
+                <Flex
+                    mt="9"
+                    mb="9"
+                    align="center"
+                    justify="center"
+                    direction="row"
+                    gap="2"
+                >
+                    <ArrowLeftIcon style={{ color: "var(--accent-a11)" }} />
+                    <Text>
+                        Update your{" "}
+                        <span
+                            style={{
+                                color: "var(--accent-a11)",
+                                textDecoration: "underline",
+                            }}
+                        >
+                            Build Volume
+                        </span>{" "}
+                        to get something here.
+                    </Text>
                 </Flex>
             </Card>
         </Flex>
@@ -49,15 +81,15 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
     const [settings, setSettings] = useState<BuildSettings>(saved);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<any | null>(null);
-    const [debouncedSettings, setDebouncedSettings] =
-        useState<BuildSettings>(saved);
+    const [hangar, setHangar] = useState<HangarContent[]>([]);
+    const [debouncedSettings, setDebouncedSettings] = useState<BuildSettings>(saved);
 
     const allEmpty = [
-            debouncedSettings.coreVolume,
-            debouncedSettings.defensiveVolume,
-            debouncedSettings.offensiveVolume,
-            debouncedSettings.propulsionVolume,
-        ].every(isEmptyVolume);
+        debouncedSettings.coreVolume,
+        debouncedSettings.defensiveVolume,
+        debouncedSettings.offensiveVolume,
+        debouncedSettings.propulsionVolume,
+    ].every(isEmptyVolume);
 
     useEffect(() => {
         if (settings === debouncedSettings) {
@@ -74,13 +106,11 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
         };
     }, [settings]);
 
-
-
     useEffect(() => {
         const controller = new AbortController();
         setLoading(true);
 
-        if(allEmpty){
+        if (allEmpty) {
             setLoading(false);
             return;
         }
@@ -105,6 +135,16 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
         return () => controller.abort();
     }, [debouncedSettings]);
 
+    const shoppingList: ShoppingRow[] = data?.requiredMaterialsForAll.filter(
+        (item: MaterialsRow) => item?.unitPrice !== undefined,
+    ).map((data: ShoppingRow) => {
+        return {
+            ...data,
+            quantity: data.quantity - (hangar.find((item) => item.name === data.name)?.quantity || 0),
+            lineTotal: data.lineTotal - ((hangar.find((item) => item.name === data.name)?.quantity || 0) * data.unitPrice)
+        }
+    }).filter((item: ShoppingRow) => item.quantity > 0);
+
     return (
         <Flex className="build_container" width="100%" gap="6">
             <Flex
@@ -117,8 +157,7 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                     setSettings={setSettings}
                 />
             </Flex>
-            {
-            allEmpty ? (
+            {allEmpty ? (
                 <EmptyState />
             ) : (
                 <Flex
@@ -133,10 +172,21 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                             matCostTotal={data?.maxBuys}
                             core={Number(debouncedSettings.coreVolume) || 0}
                             def={Number(debouncedSettings.defensiveVolume) || 0}
-                            prop={Number(debouncedSettings.propulsionVolume) || 0}
+                            prop={
+                                Number(debouncedSettings.propulsionVolume) || 0
+                            }
                             off={Number(debouncedSettings.offensiveVolume) || 0}
                             numRuns={data?.blueprints.numRuns}
                         />
+
+                        <MaterialsInput setHangar={setHangar} />
+                        <Toast.Provider swipeDirection="right">
+                            <ShoppingList
+                                loading={loading}
+                                shoppingList={shoppingList}
+                            />
+                            <Toast.Viewport className="ToastViewport" />
+                        </Toast.Provider>
                         <Toast.Provider swipeDirection="right">
                             <ComponentsTable
                                 loading={loading}
@@ -150,16 +200,6 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                                         (a: MaterialsRow, b: MaterialsRow) =>
                                             a.quantity - b.quantity,
                                     )}
-                            />
-                            <Toast.Viewport className="ToastViewport" />
-                        </Toast.Provider>
-                        <Toast.Provider swipeDirection="right">
-                            <ShoppingList
-                                loading={loading}
-                                shoppingList={data?.requiredMaterialsForAll.filter(
-                                    (item: MaterialsRow) =>
-                                        item?.unitPrice !== undefined,
-                                )}
                             />
                             <Toast.Viewport className="ToastViewport" />
                         </Toast.Provider>

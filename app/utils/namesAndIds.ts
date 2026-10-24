@@ -66,3 +66,16 @@ export const systemNamesAndIds = [
         name: 'Rens', id: 10000030
     }
 ]
+
+export const componentIds = [30002, 30464, 30470, 30474, 30476, 29992, 29994, 30008, 30478];
+export const componentNames = [
+    "Fullerene Intercalated Sheets", 
+    "Metallofullerene Plating",
+    "Neurovisual Output Analyzer",
+    "Nanowire Composites",
+    "Fulleroferrocene Power Conduits",
+    "Optimized Nano-Engines",
+    "Warfare Computation Core",
+    "Reinforced Metallofullerene Alloys",
+    "Reconfigured Subspace Calibrator"
+];
