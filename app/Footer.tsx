@@ -31,10 +31,11 @@ export const Footer = () => {
                 <Link href="/build">
                     <Text size="3">Build Calculator</Text>
                 </Link>
-                <Link href="/about">
+                {/* TODO: ADD AN ABOUT PAGE */}
+                {/* <Link href="/about">
                     <Text size="3">About</Text>
-                </Link>
-                <Link href="https://github.com/EFawke/EveSubsystemAnalysis">
+                </Link> */}
+                <Link href="https://github.com/EFawke/esa_redesign">
                     <Text size="3">GitHub</Text>
                 </Link>
             </Flex>
