@@ -111,8 +111,13 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
         setLoading(true);
 
         if (allEmpty) {
-            setLoading(false);
-            return;
+            gary<BuildSettings>("/api/captureCookies", {json: debouncedSettings, signal: controller.signal})
+                .catch((err) => {
+                    console.error(err);
+                })
+                .finally(() => {
+                    setLoading(false);
+                })
         }
 
         gary<BuildSettings>("/api/build", {
@@ -140,8 +145,8 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
     ).map((data: ShoppingRow) => {
         return {
             ...data,
-            quantity: data.quantity - (hangar.find((item) => item.name === data.name)?.quantity || 0),
-            lineTotal: data.lineTotal - ((hangar.find((item) => item.name === data.name)?.quantity || 0) * data.unitPrice)
+            quantity: data.quantity - (hangar.find((item) => item.name.toLowerCase() === data.name?.toLowerCase())?.quantity || 0),
+            lineTotal: data.lineTotal - ((hangar.find((item) => item.name.toLowerCase() === data.name?.toLowerCase())?.quantity || 0) * data.unitPrice)
         }
     }).filter((item: ShoppingRow) => item.quantity > 0);
 
@@ -199,7 +204,9 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                                     .sort(
                                         (a: MaterialsRow, b: MaterialsRow) =>
                                             a.quantity - b.quantity,
-                                    )}
+                                    ).filter((item: MaterialsRow) => item.quantity > 0)
+                                
+                                }
                             />
                             <Toast.Viewport className="ToastViewport" />
                         </Toast.Provider>

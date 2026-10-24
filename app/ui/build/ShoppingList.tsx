@@ -40,12 +40,6 @@ export const ShoppingList = ({
         return <ShoppingListSkeleton />;
     }
 
-    // if (!shoppingList) {
-    //     return <EmptyShoppingListState />;
-    // }
-
-    console.log(shoppingList);
-
     return (
         <>
             <Flex justify="between" align="start" mt="5" mb="4">

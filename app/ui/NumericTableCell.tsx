@@ -9,19 +9,24 @@ export default function NumericTableCell({
     type,
     upIsBad
 }: {
-    value: number | "Infinity" | '0';
+    value: number | "Infinity" | '0' | "-Infinity";
     percentage?: number;
     message: string;
     type: "price" | "int";
     upIsBad?: boolean;
 }) {
-    if (value === 0) {
+    if (value === 0 || value === "Infinity" || value === "-Infinity") {
         return (
-            <Flex height="100%" align="center" justify="end">
-                <Badge variant="outline" color="orange" size="3">
-                    No Data
-                </Badge>
-            </Flex>
+            <Flex justify='end' align='center' style={{width: '100%', height: '100%'}}>
+                    <Badge variant="outline" color="orange" size="3" style={{
+                        padding: 'var(--space-2)', 
+                        width: '100%', 
+                        justifyContent: 'center',
+                        maxWidth: '8rem'
+                    }}>
+                        No Data
+                    </Badge>
+                </Flex>
         );
     }
 
@@ -34,7 +39,7 @@ export default function NumericTableCell({
     return (
         <Box
             height="100%"
-            style={value === "Infinity" || value === '0' ? {} : {
+            style={value === Infinity || value === '0' ? {} : {
                 display: "grid",
                 gridTemplateColumns: "1fr 3rem",
                 alignItems: "center",
@@ -42,7 +47,7 @@ export default function NumericTableCell({
                 fontVariantNumeric: "tabular-nums",
             }}
         >
-            {value === "Infinity" || value === '0' ? (
+            {value === Infinity || value === '0' ? (
                 <Flex justify='end' align='center' style={{width: '100%', height: '100%'}}>
                     <Badge variant="outline" color="orange" size="3" style={{
                         padding: 'var(--space-2)', 
@@ -60,7 +65,7 @@ export default function NumericTableCell({
             ) : (
                 formatted
             )}
-            {value === "Infinity" || value === '0' || percentage === undefined ? null : (
+            {value === Infinity || value === '0' || percentage === undefined ? null : (
                 <Tooltip content={message}>
                     <Flex
                         direction="column"

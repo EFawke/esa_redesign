@@ -4,10 +4,10 @@ export const UNITS: [number, string][] = [
 ];
 
 export function formatNumber(
-    num: number | "Infinity" | "0",
+    num: number | "Infinity" | "0" | "-Infinity",
     type: "price" | "int",
 ) {
-    if (num === "Infinity" || num === "0") {
+    if (num === "Infinity" || num === "0" || num === "-Infinity") {
         return;
     }
     const suffix = type === "price" ? " ISK" : "";

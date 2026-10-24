@@ -92,18 +92,18 @@ export const checkBuildSettingsType = (object: any) => {
     if(object?.componentTimeEfficiency === undefined || typeof object?.componentTimeEfficiency !== 'number'){
         return false;
     }
-    if(object?.coreVolume === undefined || typeof object?.coreVolume !== 'number'){
-        return false;
-    }
-    if(object?.defensiveVolume === undefined || typeof object?.defensiveVolume !== 'number'){
-        return false;
-    }
-    if(object?.offensiveVolume === undefined || typeof object?.offensiveVolume !== 'number'){
-        return false;
-    }
-    if(object?.propulsionVolume === undefined || typeof object?.propulsionVolume !== 'number'){
-        return false;
-    }
+    // if(object?.coreVolume === undefined || typeof object?.coreVolume !== 'number'){
+    //     return false;
+    // }
+    // if(object?.defensiveVolume === undefined || typeof object?.defensiveVolume !== 'number'){
+    //     return false;
+    // }
+    // if(object?.offensiveVolume === undefined || typeof object?.offensiveVolume !== 'number'){
+    //     return false;
+    // }
+    // if(object?.propulsionVolume === undefined || typeof object?.propulsionVolume !== 'number'){
+    //     return false;
+    // }
     if(object?.skillLevel === undefined || typeof object?.skillLevel !== 'number'){
         return false;
     }

@@ -44,8 +44,15 @@ export default async function Page({
                                     >
                                         {name}
                                     </Heading>
-                                    <Text color="gray"><i>{`Buying materials in ${systemNamesAndIds.find((hub) => hub.id === settings.materialsLocation)?.name} from ${settings.materialsOrderType} orders and selling subsystems in ${systemNamesAndIds.find((hub) => hub.id === settings.subsystemsLocation)?.name} to ${settings.subsystemsOrderType} orders.`}</i></Text>
-                                </Flex>
+                                    <Text>
+  <i style={{color: 'var(--gray-12)'}}>
+    Buying materials in{" "}
+    <b style={{color: 'var(--accent-a11)'}}>{systemNamesAndIds.find((hub) => hub.id === settings.materialsLocation)?.name} from</b>{" "}
+    <b style={{color: 'var(--accent-a11)'}}>{settings.materialsOrderType} orders</b> and selling subsystems in{" "}
+    <b style={{color: 'var(--accent-a11)'}}>{systemNamesAndIds.find((hub) => hub.id === settings.subsystemsLocation)?.name}</b>{" "}
+    <b style={{color: 'var(--accent-a11)'}}>to {settings.subsystemsOrderType} orders</b>.
+  </i>
+</Text>                                </Flex>
                             </HoverCard.Trigger>
                             <HoverCard.Content maxWidth="300px">
                                 <Flex gap="1" direction="column">

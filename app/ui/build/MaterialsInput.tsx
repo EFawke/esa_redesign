@@ -11,16 +11,20 @@ export const MaterialsInput = ({
     setHangar: (hangar: HangarContent[]) => void;
 }) => {
     const [showTable, setShowTable] = useState(true);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [data, setData] = useState<string>("");
 
     const parseRaw = (val: string):HangarContent[] => {
         const rows = val
             ?.split("\n")
             .map((row) => {
+                const name = row?.split("\t")[0].split("  ")[0];
+                const tabQty = Number(row?.split("\t")[1]?.replaceAll(",", ""));
+                const spaceQty = Number(row?.split("  ")[1]?.replaceAll(",", ""));
+                const quantity = !tabQty ? spaceQty : tabQty;
                 return {
-                    name: row?.split("\t")[0],
-                    quantity: Number(row?.split("\t")[1]),
+                    name: name,
+                    quantity: quantity
                 };
             })
             .filter((data) => !componentNames.includes(data.name))
@@ -53,8 +57,10 @@ export const MaterialsInput = ({
     }
 
     useEffect(() => {
+        // setLoading(true);
         const timeout = setTimeout(() => {
-            setHangar(parseRaw(data))
+            setHangar(parseRaw(data));
+            // setLoading(false);
         }, 500)
 
         return () => {
@@ -82,7 +88,7 @@ export const MaterialsInput = ({
             {showTable && (
                 <Card style={{ width: "100%" }} className="box_shadowed">
                 <TextArea
-                    disabled={loading}
+                    // disabled={loading}
                     resize="vertical"
                     onChange={(e) => setData(e.target.value)}
                     placeholder="CTRL + V here to remove items from your shopping list. (overview price will not be updated)."

@@ -17,6 +17,63 @@ import NextLink from "next/link";
 import {type CurrentData, type CurrentDataField} from './AnalysisPageContent';
 import NumericTableCell from "../NumericTableCell";
 const PRICE_FIELDS = ["Min Sell", "Max Buy", "Profit", "Material Cost"];
+
+const LossesLabel = ({title}: {title: string}) => {
+    return (    <HoverCard.Root>
+        <HoverCard.Trigger>
+            <Flex
+                justify="start"
+                align="center"
+                gap="1"
+            >
+                <Text size="3">
+                    {title}
+                </Text>
+                <InfoCircledIcon
+                    className="info_icon"
+                    height="12px"
+                    width="12px"
+                />
+            </Flex>
+        </HoverCard.Trigger>
+        <HoverCard.Content maxWidth="300px">
+            <Flex
+                gap="1"
+                direction={
+                    "column"
+                }
+                justify={
+                    "start"
+                }
+            >
+                <Heading
+                    size="3"
+                    mb="2"
+                    color="gray"
+                >
+                    {title}
+                </Heading>
+                <Text size="2">
+                    How many of this subsystem has been lost by players. Data from {" "}
+                    <NextLink
+                        style={{
+                            color: "var(--accent-a11)",
+                            fontSize:
+                                "var(--size-2)",
+                            textDecoration: "underline"
+                        }}
+                        href="https://zkillboard.com/"
+                        target="_blank"
+                    >
+                        zkillboard
+                    </NextLink>
+                    .
+                </Text>
+            </Flex>
+        </HoverCard.Content>
+    </HoverCard.Root>)
+}
+
 export const AnalysisComponent = ({
     loading,
     data,
@@ -95,6 +152,7 @@ export const AnalysisComponent = ({
                                                                     on your{" "}
                                                                     <NextLink
                                                                         style={{
+                                                                            color: "var(--accent-a11)",
                                                                             fontSize:
                                                                                 "var(--size-2)",
                                                                             textDecoration: "underline"
@@ -108,7 +166,7 @@ export const AnalysisComponent = ({
                                                             </Flex>
                                                         </HoverCard.Content>
                                                     </HoverCard.Root>
-                                                ) : (
+                                                ) : item.title === "Losses" ? (<LossesLabel title={item.title}/>) : (
                                                     <Text size="3">
                                                         {item.title}
                                                     </Text>
