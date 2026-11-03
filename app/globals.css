@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* .radix-themes:where([data-has-background="true"]) {
+  background: var(--indigo-2);
+} */
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
@@ -154,6 +158,12 @@ html.light .radix-themes[data-is-root-theme="true"] {
 .AccordionContentText {
   font-size: var(--font-size-2);
 }
+.vol_eq_mobile {
+ display: none;
+}
+.vol_eq_desktop {
+  display: flex;
+}
 
 @media (max-width: 1111px) {
   .AccordionContentText {
@@ -168,12 +178,9 @@ html.light .radix-themes[data-is-root-theme="true"] {
   .SelectTrigger {
     font-size: var(--font-size-4) !important;
   }
-
   .analysis_page_layout {
     flex-direction: column;
   }
-  
-
   .settings_accordion {
     width: 100%;
     position: relative;
@@ -181,21 +188,23 @@ html.light .radix-themes[data-is-root-theme="true"] {
     top: unset;
 
   }
-
   .required_materials {
     width: 100%;
   }
-
   .build_container {
     flex-direction: column;
   }
-
   .desktop_home_navi {
     display: none;
   }
-
   .mobile_home_navi {
     display: flex;
+  }
+  .vol_eq_mobile {
+    display: flex;
+  }
+  .vol_eq_desktop {
+    display: none;
   }
 }
 

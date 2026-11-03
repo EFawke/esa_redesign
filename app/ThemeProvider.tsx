@@ -39,7 +39,7 @@ export function ThemeProvider({
     <Theme
       accentColor="amber"
       panelBackground="solid"
-      radius="large"
+      radius="small"
       grayColor="mauve"
       appearance={appearance ?? "inherit"}
     >

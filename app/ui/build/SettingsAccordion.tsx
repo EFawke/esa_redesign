@@ -16,7 +16,7 @@ import { type BuildSettings } from "@/app/utils/user_settings";
 export const SettingsAccordion = ({
 	settings,
 	setSettings,
-	numRuns
+	numRuns,
 }: {
 	settings: BuildSettings | null;
 	setSettings: (settings: BuildSettings) => void;
@@ -25,6 +25,12 @@ export const SettingsAccordion = ({
 	if (settings === null) {
 		return null;
 	}
+
+	let coreVol = settings.coreVolume || '';
+	let offVol = settings.offensiveVolume || '';
+	let defVol = settings.defensiveVolume || '';
+	let propVol = settings.propulsionVolume || '';
+
 	return (
 		<Accordion.Root
 			className="AccordionRoot box_shadowed"
@@ -56,7 +62,7 @@ export const SettingsAccordion = ({
 								placeholder="0"
 								min={0}
 								step={1}
-								defaultValue={settings.coreVolume || ""}
+								defaultValue={coreVol}
 								onChange={(e) => {
 									setSettings({
 										...settings,
@@ -67,10 +73,19 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-								<TextField.Slot side='right'>
-									<Text style={{color: 'var(--gray-10)'}}>{`* ${numRuns}  (${(settings?.coreVolume || 0) * numRuns})`}</Text>
+								<TextField.Slot
+									side="right"
+									className="vol_eq_desktop"
+								>
+									<Text
+										style={{ color: "var(--gray-10)" }}
+									>{!numRuns ? '' : `* ${numRuns}  (${(settings?.coreVolume || 0) * numRuns})`}</Text>
 								</TextField.Slot>
 							</TextField.Root>
+							<Text
+								className="vol_eq_mobile"
+								style={{ color: "var(--gray-10)" }}
+							>{!numRuns ? '' : `* ${numRuns}  (${(settings?.coreVolume || 0) * numRuns})`}</Text>
 							<Text className="accordion_label">Defensive</Text>
 							<TextField.Root
 								className="styled_accordion"
@@ -79,7 +94,7 @@ export const SettingsAccordion = ({
 								placeholder="0"
 								min={0}
 								step={1}
-								defaultValue={settings.defensiveVolume || ""}
+								defaultValue={defVol}
 								onChange={(e) => {
 									setSettings({
 										...settings,
@@ -90,10 +105,19 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-								<TextField.Slot side='right'>
-									<Text style={{color: 'var(--gray-10)'}}>{`* ${numRuns} (${(settings?.defensiveVolume || 0) * numRuns})`}</Text>
+								<TextField.Slot
+									side="right"
+									className="vol_eq_desktop"
+								>
+									<Text
+										style={{ color: "var(--gray-10)" }}
+									>{!numRuns ? '' : `* ${numRuns} (${(settings?.defensiveVolume || 0) * numRuns})`}</Text>
 								</TextField.Slot>
 							</TextField.Root>
+							<Text
+								className="vol_eq_mobile"
+								style={{ color: "var(--gray-10)" }}
+							>{!numRuns ? '' : `* ${numRuns}  (${(settings?.defensiveVolume || 0) * numRuns})`}</Text>
 						</Flex>
 						<Flex
 							direction="column"
@@ -109,7 +133,7 @@ export const SettingsAccordion = ({
 								placeholder="0"
 								min={0}
 								step={1}
-								defaultValue={settings.offensiveVolume || ""}
+								defaultValue={offVol}
 								onChange={(e) => {
 									setSettings({
 										...settings,
@@ -120,10 +144,19 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-						<TextField.Slot side='right'>
-							<Text style={{color: 'var(--gray-10)'}}>{`* ${numRuns} (${(settings?.offensiveVolume || 0) * numRuns})`}</Text>
-						</TextField.Slot>
-						</TextField.Root>
+								<TextField.Slot
+									side="right"
+									className="vol_eq_desktop"
+								>
+									<Text
+										style={{ color: "var(--gray-10)" }}
+									>{!numRuns ? '' : `* ${numRuns} (${(settings?.offensiveVolume || 0) * numRuns})`}</Text>
+								</TextField.Slot>
+							</TextField.Root>
+							<Text
+								className="vol_eq_mobile"
+								style={{ color: "var(--gray-10)" }}
+							>{!numRuns ? '' : `* ${numRuns} (${(settings?.offensiveVolume || 0) * numRuns})`}</Text>
 							<Text className="accordion_label">Propulsion</Text>
 							<TextField.Root
 								className="styled_accordion"
@@ -132,7 +165,7 @@ export const SettingsAccordion = ({
 								placeholder="0"
 								min={0}
 								step={1}
-								defaultValue={settings.propulsionVolume || ""}
+								defaultValue={propVol}
 								onChange={(e) => {
 									setSettings({
 										...settings,
@@ -143,10 +176,19 @@ export const SettingsAccordion = ({
 									});
 								}}
 							>
-														<TextField.Slot side='right'>
-							<Text style={{color: 'var(--gray-10)'}}>{`* ${numRuns} (${(settings?.propulsionVolume || 0) * numRuns})`}</Text>
-						</TextField.Slot>
+								<TextField.Slot
+									side="right"
+									className="vol_eq_desktop"
+								>
+									<Text
+										style={{ color: "var(--gray-10)" }}
+									>{!numRuns ? '' : `* ${numRuns} (${(settings?.propulsionVolume || 0) * numRuns})`}</Text>
+								</TextField.Slot>
 							</TextField.Root>
+							<Text
+								className="vol_eq_mobile"
+								style={{ color: "var(--gray-10)" }}
+							>{!numRuns ? '' : `* ${numRuns} (${(settings?.propulsionVolume || 0) * numRuns})`}</Text>
 						</Flex>
 					</Flex>
 				</AccordionContent>
@@ -154,257 +196,279 @@ export const SettingsAccordion = ({
 			<Accordion.Item className="AccordionItem" value="item-2">
 				<AccordionTrigger>Blueprints</AccordionTrigger>
 				<AccordionContent>
-					<Flex 						
+					<Flex
 						direction="row"
 						align="start"
 						style={{ width: "100%" }}
 						justify="between"
 						mt="2"
-						mb="2">
-					<Flex
-						direction="row"
-						align="start"
-						style={{ width: "40%" }}
-						justify="between"
-						mt="2"
 						mb="2"
 					>
 						<Flex
-							direction="column"
-							gap="4"
+							direction="row"
 							align="start"
-							style={{ width: "100%" }}
+							style={{ width: "40%" }}
+							justify="between"
+							mt="2"
+							mb="2"
 						>
 							<Flex
 								direction="column"
-								gap="2"
+								gap="4"
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text className="accordion_label" mb='1'
-									// weight='bold' 
-									style={{fontSize: 'var(--font-size-3)', textDecoration: 'underline'}}>Components</Text>
-								<Tooltip content="Component BPO Material Efficiency">
-									<Text className="accordion_label">{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
-								</Tooltip>
-								<Slider
-									name="componentMaterialEfficiency"
-									min={0}
-									step={1}
-									max={10}
-									defaultValue={[
-										settings.componentMaterialEfficiency,
-									]}
-									onValueChange={(e: number[]) => {
-										setSettings({
-											...settings,
-											componentMaterialEfficiency: e[0],
-										});
-									}}
-								/>
-							</Flex>
-							<Flex
-								direction="column"
-								gap="2"
-								align="start"
-								style={{ width: "100%" }}
-							>
+								<Flex
+									direction="column"
+									gap="2"
+									align="start"
+									style={{ width: "100%" }}
+								>
+									<Text
+										className="accordion_label"
+										mb="1"
+										// weight='bold'
+										style={{
+											fontSize: "var(--font-size-3)",
+											color: "var(--gray-11)"
+										}}
+									>
+										Components
+									</Text>
+									<Tooltip content="Component BPO Material Efficiency">
+										<Text className="accordion_label">{`Component M.E (${settings.componentMaterialEfficiency})`}</Text>
+									</Tooltip>
+									<Slider
+										name="componentMaterialEfficiency"
+										min={0}
+										step={1}
+										max={10}
+										defaultValue={[
+											settings.componentMaterialEfficiency,
+										]}
+										onValueChange={(e: number[]) => {
+											setSettings({
+												...settings,
+												componentMaterialEfficiency:
+													e[0],
+											});
+										}}
+									/>
+								</Flex>
 								<Tooltip content="Feature in development">
-									<Text className="accordion_label">{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
+								<Flex
+									direction="column"
+									gap="2"
+									align="start"
+									style={{ width: "100%" }}
+								>
+									
+										<Text className="accordion_label">{`Component T.E. (${settings.componentTimeEfficiency})`}</Text>
+									
+									<Slider
+										disabled
+										name="componentTimeEfficiency"
+										min={0}
+										step={1}
+										max={20}
+										defaultValue={[
+											settings.componentTimeEfficiency,
+										]}
+										onValueChange={(e) => {
+											setSettings({
+												...settings,
+												componentTimeEfficiency: e[0],
+											});
+										}}
+									/>
+								</Flex>
 								</Tooltip>
-								<Slider
-									name="componentTimeEfficiency"
-									min={0}
-									step={1}
-									max={20}
-									defaultValue={[
-										settings.componentTimeEfficiency,
-									]}
-									onValueChange={(e) => {
-										setSettings({
-											...settings,
-											componentTimeEfficiency: e[0],
-										});
-									}}
-								/>
 							</Flex>
 						</Flex>
-					</Flex>
-					<Flex
-						direction="row"
-						align="start"
-						style={{ width: "40%" }}
-						justify="between"
-						mt="2"
-						mb="2"
-					>
 						<Flex
-							direction="column"
-							gap="2"
+							direction="row"
 							align="start"
-							style={{ width: "100%" }}
+							style={{ width: "40%" }}
+							justify="between"
+							mt="2"
+							mb="2"
 						>
 							<Flex
 								direction="column"
-								gap="1"
+								gap="2"
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text className="accordion_label" mb='1' 
-									// weight='bold' 
-									style={{fontSize: 'var(--font-size-3)', textDecoration: 'underline'}}>Invention</Text>
-								<Text className="accordion_label">
-									Ancient Relic
-								</Text>
-								<Select.Root
-									defaultValue={settings.ancientRelic}
-									onValueChange={(
-										value:
-											| "Wrecked"
-											| "Malfunctioning"
-											| "Intact",
-									) => {
-										setSettings({
-											...settings,
-											ancientRelic: value,
-										});
-									}}
+								<Flex
+									direction="column"
+									gap="1"
+									align="start"
+									style={{ width: "100%" }}
 								>
-									<Select.Trigger
-										className="styled_accordion"
-										style={{ width: "100%" }}
-									/>
-									<Select.Content
-										className="styled_accordion"
-										style={{ width: "100%" }}
+									<Text
+										className="accordion_label"
+										mb="1"
+										style={{
+											fontSize: "var(--font-size-3)",
+											color: "var(--gray-11)"
+										}}
 									>
-										<Select.Group>
-											<Select.Label className="styled_accordion">
-												Ancient Relic
-											</Select.Label>
-											<Select.Item
-												value="Wrecked"
-												className="styled_accordion"
-											>
-												Wrecked
-											</Select.Item>
-											<Select.Item
-												value="Malfunctioning"
-												className="styled_accordion"
-											>
-												Malfunctioning
-											</Select.Item>
-											<Select.Item
-												value="Intact"
-												className="styled_accordion"
-											>
-												Intact
-											</Select.Item>
-										</Select.Group>
-									</Select.Content>
-								</Select.Root>
-							</Flex>
-							<Flex
-								direction="column"
-								gap="1"
-								align="start"
-								style={{ width: "100%" }}
-							>
-								<Text className="accordion_label">
-									Decryptor
-								</Text>
-								<Select.Root
-									defaultValue={settings.decryptor}
-									onValueChange={(
-										value:
-											| "Accelerant Decryptor"
-											| "Optimized Attainment Decryptor"
-											| "Attainment Decryptor"
-											| "Augmentation Decryptor"
-											| "Parity Decryptor"
-											| "Process Decryptor"
-											| "Symmetry Decryptor"
-											| "Optimized Augmentation Decryptor"
-											| "None",
-									) => {
-										setSettings({
-											...settings,
-											decryptor: value,
-										});
-									}}
+										Invention
+									</Text>
+									<Text className="accordion_label">
+										Ancient Relic
+									</Text>
+									<Select.Root
+										defaultValue={settings.ancientRelic}
+										onValueChange={(
+											value:
+												| "Wrecked"
+												| "Malfunctioning"
+												| "Intact",
+										) => {
+											setSettings({
+												...settings,
+												ancientRelic: value,
+											});
+										}}
+									>
+										<Select.Trigger
+											className="styled_accordion"
+											style={{ width: "100%" }}
+										/>
+										<Select.Content
+											className="styled_accordion"
+											style={{ width: "100%" }}
+										>
+											<Select.Group>
+												<Select.Label className="styled_accordion">
+													Ancient Relic
+												</Select.Label>
+												<Select.Item
+													value="Wrecked"
+													className="styled_accordion"
+												>
+													Wrecked
+												</Select.Item>
+												<Select.Item
+													value="Malfunctioning"
+													className="styled_accordion"
+												>
+													Malfunctioning
+												</Select.Item>
+												<Select.Item
+													value="Intact"
+													className="styled_accordion"
+												>
+													Intact
+												</Select.Item>
+											</Select.Group>
+										</Select.Content>
+									</Select.Root>
+								</Flex>
+								<Flex
+									direction="column"
+									gap="1"
+									align="start"
+									style={{ width: "100%" }}
 								>
-									<Select.Trigger
-										className="styled_accordion"
-										style={{ width: "100%" }}
-									/>
-									<Select.Content
-										className="styled_accordion"
-										style={{ width: "100%" }}
+									<Text className="accordion_label">
+										Decryptor
+									</Text>
+									<Select.Root
+										defaultValue={settings.decryptor}
+										onValueChange={(
+											value:
+												| "Accelerant Decryptor"
+												| "Optimized Attainment Decryptor"
+												| "Attainment Decryptor"
+												| "Augmentation Decryptor"
+												| "Parity Decryptor"
+												| "Process Decryptor"
+												| "Symmetry Decryptor"
+												| "Optimized Augmentation Decryptor"
+												| "None",
+										) => {
+											setSettings({
+												...settings,
+												decryptor: value,
+											});
+										}}
 									>
-										<Select.Group>
-											<Select.Label className="styled_accordion">
-												Decryptor
-											</Select.Label>
-											<Select.Item
-												value="None"
-												className="styled_accordion"
-											>
-												None
-											</Select.Item>
-											<Select.Item
-												value="Accelerant Decryptor"
-												className="styled_accordion"
-											>
-												Accelerant Decryptor
-											</Select.Item>
-											<Select.Item
-												value="Attainment Decryptor"
-												className="styled_accordion"
-											>
-												Attainment Decryptor
-											</Select.Item>
-											<Select.Item
-												value="Augmentation Decryptor"
-												className="styled_accordion"
-											>
-												Augmentation Decryptor
-											</Select.Item>
-											<Select.Item
-												value="Optimized Attainment Decryptor"
-												className="styled_accordion"
-											>
-												Optimized Attainment Decryptor
-											</Select.Item>
-											<Select.Item
-												value="Optimized Augmentation Decryptor"
-												className="styled_accordion"
-											>
-												Optimized Augmentation Decryptor
-											</Select.Item>
-											<Select.Item
-												value="Parity Decryptor"
-												className="styled_accordion"
-											>
-												Parity Decryptor
-											</Select.Item>
-											<Select.Item
-												value="Process Decryptor"
-												className="styled_accordion"
-											>
-												Process Decryptor
-											</Select.Item>
-											<Select.Item
-												value="Symmetry Decryptor"
-												className="styled_accordion"
-											>
-												Symmetry Decryptor
-											</Select.Item>
-										</Select.Group>
-									</Select.Content>
-								</Select.Root>
+										<Select.Trigger
+											className="styled_accordion"
+											style={{ width: "100%" }}
+										/>
+										<Select.Content
+											className="styled_accordion"
+											style={{ width: "100%" }}
+										>
+											<Select.Group>
+												<Select.Label className="styled_accordion">
+													Decryptor
+												</Select.Label>
+												<Select.Item
+													value="None"
+													className="styled_accordion"
+												>
+													None
+												</Select.Item>
+												<Select.Item
+													value="Accelerant Decryptor"
+													className="styled_accordion"
+												>
+													Accelerant Decryptor
+												</Select.Item>
+												<Select.Item
+													value="Attainment Decryptor"
+													className="styled_accordion"
+												>
+													Attainment Decryptor
+												</Select.Item>
+												<Select.Item
+													value="Augmentation Decryptor"
+													className="styled_accordion"
+												>
+													Augmentation Decryptor
+												</Select.Item>
+												<Select.Item
+													value="Optimized Attainment Decryptor"
+													className="styled_accordion"
+												>
+													Optimized Attainment
+													Decryptor
+												</Select.Item>
+												<Select.Item
+													value="Optimized Augmentation Decryptor"
+													className="styled_accordion"
+												>
+													Optimized Augmentation
+													Decryptor
+												</Select.Item>
+												<Select.Item
+													value="Parity Decryptor"
+													className="styled_accordion"
+												>
+													Parity Decryptor
+												</Select.Item>
+												<Select.Item
+													value="Process Decryptor"
+													className="styled_accordion"
+												>
+													Process Decryptor
+												</Select.Item>
+												<Select.Item
+													value="Symmetry Decryptor"
+													className="styled_accordion"
+												>
+													Symmetry Decryptor
+												</Select.Item>
+											</Select.Group>
+										</Select.Content>
+									</Select.Root>
+								</Flex>
 							</Flex>
 						</Flex>
-					</Flex>
 					</Flex>
 				</AccordionContent>
 			</Accordion.Item>
@@ -708,7 +772,7 @@ export const SettingsAccordion = ({
 									style={{ width: "100%" }}
 								>
 									<Text className="accordion_label">
-										Reaction System Cost Index
+										System Cost Index
 									</Text>
 									<TextField.Root
 										className="styled_accordion"
@@ -778,7 +842,7 @@ export const SettingsAccordion = ({
 				</AccordionContent>
 			</Accordion.Item>
 			<Accordion.Item className="AccordionItem" value="item-4">
-				<AccordionTrigger>Industrial Complex</AccordionTrigger>
+				<AccordionTrigger>Manufacturing Complex</AccordionTrigger>
 				<AccordionContent>
 					<Flex
 						direction="row"
@@ -800,7 +864,7 @@ export const SettingsAccordion = ({
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Text className="accordion_label">
+								<Text className="accordion_label" style={{textWrap: 'nowrap'}}>
 									Manufacturing Complex
 								</Text>
 								<Select.Root
@@ -1090,8 +1154,8 @@ export const SettingsAccordion = ({
 									align="start"
 									style={{ width: "100%" }}
 								>
-									<Text className="accordion_label">
-										Build System Cost Index
+									<Text className="accordion_label" style={{textWrap: 'nowrap'}}>
+										System Cost Index
 									</Text>
 									<TextField.Root
 										className="styled_accordion"
@@ -1247,18 +1311,20 @@ export const SettingsAccordion = ({
 							align="start"
 							style={{ width: "40%" }}
 						>
+							<Tooltip content="Feature in development">
 							<Flex
 								direction="column"
 								gap="1"
 								align="start"
 								style={{ width: "100%" }}
 							>
-								<Tooltip content="Feature in development">
+								
 									<Text className="accordion_label">
 										Implant
 									</Text>
-								</Tooltip>
+								
 								<Select.Root
+									disabled
 									defaultValue={settings.implant}
 									onValueChange={(
 										value: "None" | "1%" | "2%" | "4%",
@@ -1308,7 +1374,9 @@ export const SettingsAccordion = ({
 										</Select.Group>
 									</Select.Content>
 								</Select.Root>
+								
 							</Flex>
+							</Tooltip>
 						</Flex>
 					</Flex>
 				</AccordionContent>
@@ -1591,5 +1659,3 @@ const AccordionContent = function AccordionContent({
 		</Accordion.Content>
 	);
 };
-
-// export SettingsAccordion;
