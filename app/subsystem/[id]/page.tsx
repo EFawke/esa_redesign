@@ -98,9 +98,9 @@ export default async function Page({
                                                 color: "var(--accent-a11)",
                                             }}
                                         >
-                                            build page
+                                            build
                                         </NextLink>{" "}
-                                        to show a different set of charts here.
+                                        page to show a different set of charts here.
                                     </Text>
                                 </Flex>
                             </HoverCard.Content>

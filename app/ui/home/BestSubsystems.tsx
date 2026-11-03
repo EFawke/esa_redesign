@@ -186,20 +186,23 @@ export const BestSubsystems = () => {
             className="box_shadowed"
         >
             <Flex justify="between" align="center" pb="3">
-                <Heading
-                    ml="3"
-                    size="4"
-                    
-                    style={{
-                        color: "var(--gray-11)",
-                        fontWeight: "400",
-                    }}
-                >
-                    Sorted by{" "}
-                    <span style={{ color: "var(--gray-12)" }}>
-                        <i>in-game losses</i>
-                    </span>
-                </Heading>
+                <Flex gap="1" ml='3' direction='column'>
+                    <Heading size='4'>All Subsystems</Heading>
+                    <Heading
+                        size="4"
+
+                        style={{
+                            color: "var(--gray-11)",
+                            fontWeight: "400",
+                        }}
+                    >
+                        Sorted by in-game losses
+                        {/* {" "}
+                        <span style={{ color: "var(--gray-12)" }}>
+                            <i>in-game losses</i>
+                        </span> */}
+                    </Heading>
+                </Flex>
                 <Flex className="mobile_home_navi">
                     <DropdownMenu.Root>
                         <DropdownMenu.Trigger>
