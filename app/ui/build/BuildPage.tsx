@@ -160,6 +160,7 @@ export const BuildPage = ({ saved }: { saved: BuildSettings }) => {
                 <SettingsAccordion
                     settings={debouncedSettings}
                     setSettings={setSettings}
+                    numRuns = {data?.blueprints.numRuns}
                 />
             </Flex>
             {allEmpty ? (
