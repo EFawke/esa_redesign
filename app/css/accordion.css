@@ -63,8 +63,9 @@ h3 {
 	font-size: var(--size-3);
 	line-height: 1;
 	color: var(--gray-12);
-	font-weight: bolder;
+	/* font-weight: bolder; */
 	background-color: var(--color-panel);
+	transition: 0.2s;
 }
 
 @media (max-width: 1111px) {
@@ -109,6 +110,7 @@ h3 {
 
 .AccordionTrigger[data-state="open"] {
 	box-shadow: 0px 1px 5px var(--accent-9);
+	font-weight: bolder;
 }
 
 .AccordionContent[data-state="open"] {
