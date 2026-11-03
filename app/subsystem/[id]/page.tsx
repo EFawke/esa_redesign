@@ -1,4 +1,11 @@
-import { Flex, Container, Heading, Text, HoverCard, Box } from "@radix-ui/themes";
+import {
+    Flex,
+    Container,
+    Heading,
+    Text,
+    HoverCard,
+    Box,
+} from "@radix-ui/themes";
 import { namesAndIds, systemNamesAndIds } from "@/app/utils/namesAndIds";
 import { AnalysisPageContent } from "@/app/ui/analysis/AnalysisPageContent";
 import { notFound } from "next/navigation";
@@ -37,22 +44,45 @@ export default async function Page({
                     <Flex gap="2" direction="column" className="appear_on_load">
                         <HoverCard.Root>
                             <HoverCard.Trigger>
-                                <Flex direction='column' gap='2'>
-                                    <Heading
-                                        size="6"
-                                        weight="light"
-                                    >
-                                        {name}
+                                <Flex direction="column" gap="2" style={{cursor: 'default'}}>
+                                    <Heading size="6">
+                                        {name.split(" - ")[0]}
+                                    </Heading>
+                                    <Heading mt='-2' size="6" weight="light" style={{color: 'var(--accent-a11)'}}>
+                                        {name.split(" - ")[1]}
                                     </Heading>
                                     <Text>
-  <i style={{color: 'var(--gray-12)'}}>
-    Buying materials in{" "}
-    <b style={{color: 'var(--accent-a11)'}}>{systemNamesAndIds.find((hub) => hub.id === settings.materialsLocation)?.name} from</b>{" "}
-    <b style={{color: 'var(--accent-a11)'}}>{settings.materialsOrderType} orders</b> and selling subsystems in{" "}
-    <b style={{color: 'var(--accent-a11)'}}>{systemNamesAndIds.find((hub) => hub.id === settings.subsystemsLocation)?.name}</b>{" "}
-    <b style={{color: 'var(--accent-a11)'}}>to {settings.subsystemsOrderType} orders</b>.
-  </i>
-</Text>                                </Flex>
+                                        Buying materials in{" "}
+                                        <i className="user_setting_indicator">
+                                            {
+                                                systemNamesAndIds.find(
+                                                    (hub) =>
+                                                        hub.id ===
+                                                        settings.materialsLocation,
+                                                )?.name
+                                            }
+                                        </i>{" "}
+                                        from{" "}
+                                        <i className="user_setting_indicator">
+                                            {settings.materialsOrderType}
+                                        </i>{" "}
+                                        orders and selling subsystems in{" "}
+                                        <i className="user_setting_indicator">
+                                            {
+                                                systemNamesAndIds.find(
+                                                    (hub) =>
+                                                        hub.id ===
+                                                        settings.subsystemsLocation,
+                                                )?.name
+                                            }
+                                        </i>{" "}
+                                        to{" "}
+                                        <i className="user_setting_indicator">
+                                            {settings.subsystemsOrderType}
+                                        </i>{" "}
+                                        orders.
+                                    </Text>{" "}
+                                </Flex>
                             </HoverCard.Trigger>
                             <HoverCard.Content maxWidth="300px">
                                 <Flex gap="1" direction="column">
@@ -65,7 +95,7 @@ export default async function Page({
                                             href="/build"
                                             style={{
                                                 textDecoration: "underline",
-                                                color: "var(--accent-a11)"
+                                                color: "var(--accent-a11)",
                                             }}
                                         >
                                             build page

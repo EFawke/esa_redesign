@@ -13,14 +13,12 @@ import {
     Skeleton,
     Box,
 } from "@radix-ui/themes";
-import {
-    DotsHorizontalIcon
-} from "@radix-ui/react-icons";
+import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import NumericTableCell from "@/app/ui/NumericTableCell";
 import { useState, useEffect } from "react";
 import { SortableHeader } from "@/app/ui/home/SortableHeader";
 import HomeToast from "@/app/ui/home/HomePageToast";
-import {gary} from '@/app/utils/gary'
+import { gary } from "@/app/utils/gary";
 import { systemNamesAndIds } from "../../utils/namesAndIds";
 import NextLink from "next/link";
 
@@ -122,7 +120,10 @@ export const BestSubsystems = () => {
         setLoading(true);
         setError(null);
 
-        gary<SubsystemRow[]>("/api/home", {json: {page, hub}, signal: controller.signal})
+        gary<SubsystemRow[]>("/api/home", {
+            json: { page, hub },
+            signal: controller.signal,
+        })
             .then((res) => {
                 setData(res);
                 setSortConfig({ key: "min_sell", direction: "desc" });
@@ -134,15 +135,15 @@ export const BestSubsystems = () => {
             })
             .finally(() => {
                 if (!controller.signal.aborted) setLoading(false);
-            })
-        
+            });
+
         return () => controller.abort();
     }, [page, hub]);
 
     const changeHub = (newHub: TradeHub) => {
         setHub(newHub);
         setPage(0);
-    }
+    };
 
     const sortData = (
         field:
@@ -161,10 +162,10 @@ export const BestSubsystems = () => {
             const av = a[field];
             const bv = b[field];
             let cmp;
-            if(field === 'item_name'){
-                cmp = String(av).localeCompare(String(bv))
+            if (field === "item_name") {
+                cmp = String(av).localeCompare(String(bv));
             } else {
-                cmp = Number(av) - Number(bv)
+                cmp = Number(av) - Number(bv);
             }
             return cmp * sign;
         });
@@ -185,24 +186,20 @@ export const BestSubsystems = () => {
             className="box_shadowed"
         >
             <Flex justify="between" align="center" pb="3">
-                <Flex gap="1" direction="column" ml="3" mt="2" mb="2">
-                    <Heading
-                        highContrast
-                        size="6"
-                        style={{ fontWeight: "600" }}
-                    >
-                        Popular subsystems
-                    </Heading>
-                    <Heading
-                        size="3"
-                        style={{
-                            color: "var(--gray-11)",
-                            fontWeight: "600",
-                        }}
-                    >
-                        The most used subsystems ordered by price
-                    </Heading>
-                </Flex>
+                <Heading
+                    ml="3"
+                    size="4"
+                    
+                    style={{
+                        color: "var(--gray-11)",
+                        fontWeight: "400",
+                    }}
+                >
+                    Sorted by{" "}
+                    <span style={{ color: "var(--gray-12)" }}>
+                        <i>in-game losses</i>
+                    </span>
+                </Heading>
                 <Flex className="mobile_home_navi">
                     <DropdownMenu.Root>
                         <DropdownMenu.Trigger>
@@ -211,19 +208,29 @@ export const BestSubsystems = () => {
                             </IconButton>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content sideOffset={5} align="end">
-                            <DropdownMenu.Item onClick={() => changeHub(10000002)}>
+                            <DropdownMenu.Item
+                                onClick={() => changeHub(10000002)}
+                            >
                                 <Text size="3">Jita</Text>
                             </DropdownMenu.Item>
-                            <DropdownMenu.Item onClick={() => changeHub(10000043)}>
+                            <DropdownMenu.Item
+                                onClick={() => changeHub(10000043)}
+                            >
                                 <Text size="3">Amarr</Text>
                             </DropdownMenu.Item>
-                            <DropdownMenu.Item onClick={() => changeHub(10000032)}>
+                            <DropdownMenu.Item
+                                onClick={() => changeHub(10000032)}
+                            >
                                 <Text size="3">Dodixie</Text>
                             </DropdownMenu.Item>
-                            <DropdownMenu.Item onClick={() => changeHub(10000042)}>
+                            <DropdownMenu.Item
+                                onClick={() => changeHub(10000042)}
+                            >
                                 <Text size="3">Hek</Text>
                             </DropdownMenu.Item>
-                            <DropdownMenu.Item onClick={() => changeHub(10000030)}>
+                            <DropdownMenu.Item
+                                onClick={() => changeHub(10000030)}
+                            >
                                 <Text size="3">Rens</Text>
                             </DropdownMenu.Item>
                         </DropdownMenu.Content>
@@ -234,7 +241,7 @@ export const BestSubsystems = () => {
                     justify="between"
                     gap="2"
                     mb="4"
-                    mt="4"
+                    mt="2"
                     mr="4"
                     height="100%"
                     align="center"
@@ -271,13 +278,19 @@ export const BestSubsystems = () => {
                     </Button>
                 </Flex>
             </Flex>
-            {
-                error ? (
-                <Flex direction='column' gap='2' style={{height: '20rem'}} justify='center' align='center'>
-                    <Heading color='red'>{error}</Heading>
+            {error ? (
+                <Flex
+                    direction="column"
+                    gap="2"
+                    style={{ height: "20rem" }}
+                    justify="center"
+                    align="center"
+                >
+                    <Heading color="red">{error}</Heading>
                     <Text>Please try again later.</Text>
-                </Flex>) : 
-                (<Table.Root>
+                </Flex>
+            ) : (
+                <Table.Root>
                     <Table.Header>
                         <Table.Row>
                             <Table.ColumnHeaderCell
@@ -289,10 +302,10 @@ export const BestSubsystems = () => {
                                     width="30px"
                                     height="100%"
                                 >
-                                    <HomeToast data={data} loading={loading}/>
+                                    <HomeToast data={data} loading={loading} />
                                 </Flex>
                             </Table.ColumnHeaderCell>
-    
+
                             <SortableHeader
                                 label="Name"
                                 column="item_name"
@@ -359,12 +372,21 @@ export const BestSubsystems = () => {
                                             />
                                         </Flex>
                                     </Table.Cell>
-                                    <Table.Cell style={{ whiteSpace: "nowrap" }}>
+                                    <Table.Cell
+                                        style={{ whiteSpace: "nowrap" }}
+                                    >
                                         <Flex height="100%" align="center">
                                             <Link asChild>
-                                                <NextLink href={`/subsystem/${row.type_id}`}>
+                                                <NextLink
+                                                    href={`/subsystem/${row.type_id}`}
+                                                >
                                                     <Flex direction="column">
-                                                        <Text style={{color: "var(--gray-12)"}} size="3">
+                                                        <Text
+                                                            style={{
+                                                                color: "var(--gray-12)",
+                                                            }}
+                                                            size="3"
+                                                        >
                                                             {
                                                                 row.item_name.split(
                                                                     " - ",
@@ -383,7 +405,9 @@ export const BestSubsystems = () => {
                                             </Link>
                                         </Flex>
                                     </Table.Cell>
-                                    <Table.Cell style={{ whiteSpace: "nowrap" }}>
+                                    <Table.Cell
+                                        style={{ whiteSpace: "nowrap" }}
+                                    >
                                         <NumericTableCell
                                             value={row.max_buy}
                                             percentage={row.max_buy_percent}
@@ -391,7 +415,9 @@ export const BestSubsystems = () => {
                                             type="price"
                                         />
                                     </Table.Cell>
-                                    <Table.Cell style={{ whiteSpace: "nowrap" }}>
+                                    <Table.Cell
+                                        style={{ whiteSpace: "nowrap" }}
+                                    >
                                         <NumericTableCell
                                             value={row.min_sell}
                                             percentage={row.min_sell_percent}
@@ -399,7 +425,9 @@ export const BestSubsystems = () => {
                                             type="price"
                                         />
                                     </Table.Cell>
-                                    <Table.Cell style={{ whiteSpace: "nowrap" }}>
+                                    <Table.Cell
+                                        style={{ whiteSpace: "nowrap" }}
+                                    >
                                         <NumericTableCell
                                             value={row.buy_volume}
                                             percentage={row.buy_volume_percent}
@@ -407,7 +435,9 @@ export const BestSubsystems = () => {
                                             type="int"
                                         />
                                     </Table.Cell>
-                                    <Table.Cell style={{ whiteSpace: "nowrap" }}>
+                                    <Table.Cell
+                                        style={{ whiteSpace: "nowrap" }}
+                                    >
                                         <NumericTableCell
                                             value={row.sell_volume}
                                             percentage={row.sell_volume_percent}
@@ -415,7 +445,9 @@ export const BestSubsystems = () => {
                                             type="int"
                                         />
                                     </Table.Cell>
-                                    <Table.Cell style={{ whiteSpace: "nowrap" }}>
+                                    <Table.Cell
+                                        style={{ whiteSpace: "nowrap" }}
+                                    >
                                         <NumericTableCell
                                             value={row.losses}
                                             percentage={row.losses_percent}
@@ -428,14 +460,13 @@ export const BestSubsystems = () => {
                         )}
                     </Table.Body>
                 </Table.Root>
-                )
-            }
+            )}
             <Flex gap="2" mt="4" mr="4" align="center" justify="end">
                 {[1, 2, 3, 4, 5].map((pageNum) => (
                     <Button
                         onClick={(e) => setPage(pageNum - 1)}
                         key={pageNum}
-                        variant={pageNum - 1 === page ? 'classic' : "outline"}
+                        variant={pageNum - 1 === page ? "classic" : "outline"}
                     >
                         {pageNum}
                     </Button>
