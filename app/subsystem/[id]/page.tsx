@@ -49,49 +49,46 @@ export default async function Page({
                         style={{ width: "100%" }}
                         className="appear_on_load"
                     >
-                        <Flex gap='2'>
-                        <Heading size="8">{name.split(" - ")[0]} - <Em style={{ color: "var(--accent-a11)" }}>{name.split(" - ")[1]}</Em></Heading>
-                        {/* <Heading size='8'> - </Heading>
-                        <Heading
-                            size="8"
-                            // weight="light"
-                            style={{ color: "var(--accent-a11)" }}
-                        >
-                            <Em>{name.split(" - ")[1]}</Em>
-                        </Heading> */}
+                        <Flex gap="2">
+                            <Heading size="8">
+                                {name.split(" - ")[0]} -{" "}
+                                <Em style={{ color: "var(--accent-a11)" }}>
+                                    {name.split(" - ")[1]}
+                                </Em>
+                            </Heading>
                         </Flex>
                         <HoverCard.Root>
-                        <HoverCard.Trigger>
-                        <Text mt="1">
-                            Materials:{" "}
-                            <i className="user_setting_indicator">
-                                {
-                                    systemNamesAndIds.find(
-                                        (hub) =>
-                                            hub.id ===
-                                            settings.materialsLocation,
-                                    )?.name
-                                }
-                            </i>{" "}
-                            <i className="user_setting_indicator">
-                                {settings.materialsOrderType}
-                            </i>{" "}
-                            | Selling:{" "}
-                            <i className="user_setting_indicator">
-                                {
-                                    systemNamesAndIds.find(
-                                        (hub) =>
-                                            hub.id ===
-                                            settings.subsystemsLocation,
-                                    )?.name
-                                }
-                            </i>{" "}
-                            <i className="user_setting_indicator">
-                                {settings.subsystemsOrderType}
-                            </i>
-                        </Text>
-                        </HoverCard.Trigger>
-                        <HoverCard.Content maxWidth="300px">
+                            <HoverCard.Trigger>
+                                <Text mt="1">
+                                    Materials:{" "}
+                                    <i className="user_setting_indicator">
+                                        {
+                                            systemNamesAndIds.find(
+                                                (hub) =>
+                                                    hub.id ===
+                                                    settings.materialsLocation,
+                                            )?.name
+                                        }
+                                    </i>{" "}
+                                    <i className="user_setting_indicator">
+                                        {settings.materialsOrderType}
+                                    </i>{" "}
+                                    | Selling:{" "}
+                                    <i className="user_setting_indicator">
+                                        {
+                                            systemNamesAndIds.find(
+                                                (hub) =>
+                                                    hub.id ===
+                                                    settings.subsystemsLocation,
+                                            )?.name
+                                        }
+                                    </i>{" "}
+                                    <i className="user_setting_indicator">
+                                        {settings.subsystemsOrderType}
+                                    </i>
+                                </Text>
+                            </HoverCard.Trigger>
+                            <HoverCard.Content maxWidth="300px">
                                 <Flex gap="1" direction="column">
                                     <Heading size="3" mb="2">
                                         Market Settings
@@ -113,33 +110,6 @@ export default async function Page({
                             </HoverCard.Content>
                         </HoverCard.Root>
                     </Flex>
-                    {/* <Flex gap="2" direction="column" className="appear_on_load">
-                        <HoverCard.Root>
-                            <HoverCard.Trigger>
-
-                            </HoverCard.Trigger>
-                            <HoverCard.Content maxWidth="300px">
-                                <Flex gap="1" direction="column">
-                                    <Heading size="3" mb="2" color="gray">
-                                        Market Settings
-                                    </Heading>
-                                    <Text size="2">
-                                        Update your trade hub settings on the{" "}
-                                        <NextLink
-                                            href="/build"
-                                            style={{
-                                                textDecoration: "underline",
-                                                color: "var(--accent-a11)",
-                                            }}
-                                        >
-                                            build
-                                        </NextLink>{" "}
-                                        page to show a different set of charts here.
-                                    </Text>
-                                </Flex>
-                            </HoverCard.Content>
-                        </HoverCard.Root>
-                    </Flex> */}
                     <AnalysisPageContent id={Number(id)} settings={settings} />
                 </Flex>
             </Container>

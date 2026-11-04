@@ -51,7 +51,7 @@ export const Header = ({
                                     width: "3.5rem",
                                     overflow: "hidden",
                                     borderRadius: "var(--radius-4)",
-                                    margin: '1rem',
+                                    margin: '1rem 1rem 1rem 0rem',
                                     boxShadow: "0 0 0 1px var(--gray-8)",
                                 }}
                             >
